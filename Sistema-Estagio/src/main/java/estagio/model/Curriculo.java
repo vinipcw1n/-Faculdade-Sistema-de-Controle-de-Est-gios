@@ -1,9 +1,12 @@
 package estagio.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Curriculo {
@@ -12,9 +15,11 @@ public class Curriculo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String formacaoAcademica;
+	@OneToMany
+	private List<Formacao> formacaoAcademica;
 	
-	private String experienciaProfissional;
+	@OneToMany
+	private List<Experiencia> experienciaProfissional;
 
 	public Long getId() {
 		return id;
@@ -24,19 +29,19 @@ public class Curriculo {
 		this.id = id;
 	}
 
-	public String getFormacaoAcademica() {
+	public List<Formacao> getFormacaoAcademica() {
 		return formacaoAcademica;
 	}
 
-	public void setFormacaoAcademica(String formacaoAcademica) {
+	public void setFormacaoAcademica(List<Formacao> formacaoAcademica) {
 		this.formacaoAcademica = formacaoAcademica;
 	}
 
-	public String getExperienciaProfissional() {
+	public List<Experiencia> getExperienciaProfissional() {
 		return experienciaProfissional;
 	}
 
-	public void setExperienciaProfissional(String experienciaProfissional) {
+	public void setExperienciaProfissional(List<Experiencia> experienciaProfissional) {
 		this.experienciaProfissional = experienciaProfissional;
 	}
 	

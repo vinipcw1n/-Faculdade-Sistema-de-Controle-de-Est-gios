@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/estagio/css/style.css">
+
+    <title>Cadastro de Aluno - Yasta</title>
+</head>
+
+<body class="h-100 bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">
+            <img src="/estagio/img/logonav.png" width="60px">
+        </a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Vagas</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Cadastrar</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Aluno</a>
+                        <a class="dropdown-item" href="#">Empresa</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid mt-fix h-100 bg-light">
+        <div class="container text-center py-5 h-100">
+            <img class="img-fluid notDraggable" src="/estagio/img/logo2.png" width="200rem" alt="">
+            <div class="jumbotron mt-5 py-4 h-100">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <h1>Cadastro de Aluno</h1>
+                    </div>
+                    <div class="col-12">
+                        <form class="text-left" method="get" action="">
+                            <div class="row">
+                                <div class="col-12 col-md-9">
+                                    <label for="nome">Nome</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1"><img src="/estagio/icons/user.svg"
+                                                    width="17rem"></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Seu nome completo"
+                                            aria-label="Nome completo" id="nome" aria-describedby="basic-addon1">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <label for="sexo">Sexo</label>
+                                        <select id="sexo" class="form-control w-100">
+                                            <option selected disabled>Choose...</option>
+                                            <option>Homem</option>
+                                            <option>Mulher</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-9">
+                                    <div class="form-group">
+                                        <label for="email">Endereço de email</label>
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="Seu endereço de email">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <label for="cpf">CPF</label>
+                                        <input type="text" class="form-control" id="cpf" placeholder="Seu CPF">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <label for="ra">RA</label>
+                                        <input type="text" class="form-control" id="ra" placeholder="Seu RA">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <div class="form-group">
+                                        <label for="endereco">Endereço</label>
+                                        <input type="text" class="form-control" id="endereco"
+                                            placeholder="Seu endereço">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="telefone">Telefone</label>
+                                        <input type="text" class="form-control" id="telefone" placeholder="Seu telefone">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <label for="senha">Senha</label>
+                                        <input type="password" class="form-control" id="senha"
+                                            placeholder="Sua senha">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-info mt-4">Cadastrar</button>
+                                    <a href="/estagio"><button type="button" class="btn btn-info mt-4">Voltar</button></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-dark text-white">
+        <div class="container pt-4">
+            <div class="container-fluid">
+                <p>Yasta - Sistema de estágios<br>Desenvolvido por: Fabricio Rocha, Gabriel Zutião, Jady Domingues,
+                    Leonardo Cerminaro e Vinícius Perna<br>2019</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

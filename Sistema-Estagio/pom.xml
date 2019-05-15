@@ -8,11 +8,11 @@
 		<version>2.2.0.M2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>controlx</groupId>
-	<artifactId>controlx</artifactId>
+	<groupId>Yasta</groupId>
+	<artifactId>Yasta</artifactId>
 	<version>1</version>
-	<name>Sistema-Estagio</name>
-	<description>Sistema de Control de Estágio</description>
+	<name>Yasta</name>
+	<description>Sistema de Gerênciamento de Estágio</description>
 
 	<properties>
 		<java.version>1.8</java.version>

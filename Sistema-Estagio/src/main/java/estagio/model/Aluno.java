@@ -21,6 +21,8 @@ public class Aluno extends Usuario {
 	
 	@ManyToMany
 	private List<Estagio> estagios = new ArrayList<>();
+	
+	private boolean sexo;
 
 	public String getRa() {
 		return ra;
@@ -53,6 +55,12 @@ public class Aluno extends Usuario {
 	public void setEstagios(List<Estagio> estagios) {
 		this.estagios = estagios;
 	}
-	
-	
+
+	public boolean isSexo() {
+		return sexo;
+	}
+
+	public void setSexo(boolean sexo) {
+		this.sexo = sexo;
+	}
 }
