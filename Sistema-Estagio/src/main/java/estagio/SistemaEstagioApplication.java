@@ -16,5 +16,4 @@ public class SistemaEstagioApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaEstagioApplication.class, args);
 	}
-
 }
