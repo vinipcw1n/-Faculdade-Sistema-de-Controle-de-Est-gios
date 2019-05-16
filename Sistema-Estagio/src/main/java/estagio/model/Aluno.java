@@ -59,7 +59,9 @@ public class Aluno extends Usuario {
 		return dataIngresso;
 	}
 
-	public void setDataIngresso(LocalDate dataIngresso) {
-		this.dataIngresso = dataIngresso;
+	public void setDataIngresso(String dataIngresso) {
+		String[] data = dataIngresso.split("/");
+		LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+		this.dataIngresso = dataFinal;
 	}
 }
