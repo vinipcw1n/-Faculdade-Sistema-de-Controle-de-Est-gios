@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 public class Empresa extends Usuario {
 	
 	private String cnpj;
+	private String responsavel;
 	
 	@OneToMany
 	private List<Vaga> vaga = new ArrayList<>();
@@ -29,6 +30,14 @@ public class Empresa extends Usuario {
 
 	public void setVaga(List<Vaga> vaga) {
 		this.vaga = vaga;
+	}
+
+	public String getResponsavel() {
+		return responsavel;
+	}
+
+	public void setResponsavel(String responsavel) {
+		this.responsavel = responsavel;
 	}
 	
 }

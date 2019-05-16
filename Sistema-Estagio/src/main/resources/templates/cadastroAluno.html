@@ -56,7 +56,7 @@
 					<div class="col-12">
 						<form class="text-left" method="post" action="salvar/aluno">
 							<div class="row">
-								<div class="col-12 col-md-9">
+								<div class="col-12 col-md-6">
 									<label for="nome">Nome</label>
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
@@ -68,49 +68,21 @@
 											name="nome" aria-describedby="basic-addon1" required>
 									</div>
 								</div>
-								<div class="col-12 col-md-3">
-									<div class="form-group">
-										<label for="sexo">Sexo</label> <select name="sexo"
-											class="form-control w-100" required>
-											<option selected disabled>Choose...</option>
-											<option value="0">Homem</option>
-											<option value="1">Mulher</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-12 col-md-9">
+								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="email">Endereço de email</label> <input
 											type="email" class="form-control" name="email"
 											placeholder="Seu endereço de email" required>
 									</div>
 								</div>
-								<div class="col-12 col-md-3">
-									<div class="form-group">
-										<label for="cpf">CPF</label> <input type="text"
-											class="form-control" name="cpf" placeholder="Seu CPF"
-											required>
-									</div>
-								</div>
 							</div>
 							<div class="row">
-								<div class="col-12 col-md-3">
+								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="ra">RA</label> <input type="text"
-											class="form-control" name="ra" placeholder="Seu RA" required>
+										<label for="prontuario">Prontuário</label> <input type="text"
+											class="form-control" name="prontuario" placeholder="Seu prontuário" required>
 									</div>
 								</div>
-								<div class="col-12 col-md-9">
-									<div class="form-group">
-										<label for="endereco">Endereço</label> <input type="text"
-											class="form-control" name="endereco"
-											placeholder="Seu endereço" required>
-									</div>
-								</div>
-							</div>
-							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="telefone">Telefone</label> <input type="text"
@@ -118,11 +90,59 @@
 											placeholder="Seu telefone" required>
 									</div>
 								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="endereco">Endereço</label> <input type="text"
+											class="form-control" name="endereco"
+											placeholder="Seu endereço" required>
+									</div>
+								</div>
+								<div class="col-8 col-md-4">
+									<div class="form-group">
+										<label for="cidade">Cidade</label> <input type="text"
+											class="form-control" name="cidade"
+											placeholder="Cidade" required>
+									</div>
+								</div>
+								<div class="col-4 col-md-2">
+									<div class="form-group">
+										<label for="cep">CEP</label> <input type="text"
+											class="form-control" name="cep"
+											placeholder="CEP" required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="estado">Estado</label> <input type="text"
+											class="form-control" name="estado"
+											placeholder="Estado" required>
+									</div>
+								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="senha">Senha</label> <input type="password"
 											class="form-control" name="senha" placeholder="Sua senha"
 											required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="curso">Curso</label> <input type="text"
+											class="form-control" name="curso" placeholder="Seu curso"
+											required>
+									</div>
+								</div>
+								<div class="col-12 col-md-6">
+									<div class="form-group">
+										<label for="dataIngresso">Data de ingresso</label> <input type="text"
+											class="form-control" name="dataIngresso" placeholder="Data de ingresso"
+											id="dataIngresso" required>
 									</div>
 								</div>
 							</div>
@@ -151,9 +171,9 @@
 		</div>
 	</footer>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<link href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css"/>
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -162,6 +182,23 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+		
+		<script type="text/javascript">
+			$(() => {
+				$("#dataIngresso").datepicker({
+					changeYear: true,
+					changeMonth: true,
+					dateFormat: 'dd/mm/yy',
+				    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+				    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+				    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+				    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+				    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+				    nextText: 'Próximo',
+				    prevText: 'Anterior'
+				});
+			})
+		</script>
 </body>
 
 </html>

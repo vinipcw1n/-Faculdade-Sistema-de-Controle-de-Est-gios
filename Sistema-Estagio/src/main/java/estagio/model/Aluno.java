@@ -1,5 +1,6 @@
 package estagio.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,9 +12,9 @@ import javax.persistence.OneToOne;
 @Entity
 public class Aluno extends Usuario {
 
-	private String ra;
-	
-	private String cpf;
+	private String prontuario;
+	private String curso;
+	private LocalDate dataIngresso;
 	
 	@OneToOne
 	@JoinColumn(name = "curriculo_id")
@@ -22,22 +23,20 @@ public class Aluno extends Usuario {
 	@ManyToMany
 	private List<Estagio> estagios = new ArrayList<>();
 	
-	private boolean sexo;
-
-	public String getRa() {
-		return ra;
+	public String getProntuario() {
+		return prontuario;
 	}
 
-	public void setRa(String ra) {
-		this.ra = ra;
+	public void setProntuario(String prontuario) {
+		this.prontuario = prontuario;
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getCurso() {
+		return curso;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setCurso(String curso) {
+		this.curso = curso;
 	}
 
 	public Curriculo getCurriculo() {
@@ -56,11 +55,11 @@ public class Aluno extends Usuario {
 		this.estagios = estagios;
 	}
 
-	public boolean isSexo() {
-		return sexo;
+	public LocalDate getDataIngresso() {
+		return dataIngresso;
 	}
 
-	public void setSexo(boolean sexo) {
-		this.sexo = sexo;
+	public void setDataIngresso(LocalDate dataIngresso) {
+		this.dataIngresso = dataIngresso;
 	}
 }
