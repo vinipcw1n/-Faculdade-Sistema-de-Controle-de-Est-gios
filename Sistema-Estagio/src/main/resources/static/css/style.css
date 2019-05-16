@@ -20,7 +20,7 @@
 }
 
 #login {
-    background-image: url("./img/loginbg.jpg");
+    background-image: url("../img/loginbg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }

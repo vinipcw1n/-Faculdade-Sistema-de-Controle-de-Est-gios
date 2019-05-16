@@ -13,7 +13,7 @@
 
 <link rel="stylesheet" href="/estagio/css/style.css">
 
-<title>Cadastro de Aluno - Yasta</title>
+<title>Cadastro de Empresa - Yasta</title>
 </head>
 
 <body class="h-100 bg-dark">
@@ -38,8 +38,8 @@
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastrar</a>
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Aluno</a> <a
-							class="dropdown-item" href="/estagio/cadastrar/empresa">Empresa</a>
+						<a class="dropdown-item" href="/estagio/cadastrar/aluno">Aluno</a> <a
+							class="dropdown-item" href="#">Empresa</a>
 					</div></li>
 			</ul>
 		</div>
@@ -51,10 +51,10 @@
 			<div class="jumbotron mt-5 py-4 h-100">
 				<div class="row">
 					<div class="col-12 mb-2">
-						<h1>Cadastro de Aluno</h1>
+						<h1>Cadastro de Empresa</h1>
 					</div>
 					<div class="col-12">
-						<form class="text-left" method="post" action="salvar/aluno">
+						<form class="text-left" method="post" action="salvar/empresa">
 							<div class="row">
 								<div class="col-12 col-md-9">
 									<label for="nome">Nome</label>
@@ -64,49 +64,33 @@
 												src="/estagio/icons/user.svg" width="17rem"></span>
 										</div>
 										<input type="text" class="form-control"
-											placeholder="Seu nome completo" aria-label="Nome completo"
+											placeholder="Nome da empresa" aria-label="Nome completo"
 											name="nome" aria-describedby="basic-addon1" required>
-									</div>
-								</div>
-								<div class="col-12 col-md-3">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
 									<div class="form-group">
-										<label for="sexo">Sexo</label> <select name="sexo"
-											class="form-control w-100" required>
-											<option selected disabled>Choose...</option>
-											<option value="0">Homem</option>
-											<option value="1">Mulher</option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-12 col-md-9">
-									<div class="form-group">
-										<label for="email">Endereço de email</label> <input
-											type="email" class="form-control" name="email"
-											placeholder="Seu endereço de email" required>
-									</div>
-								</div>
-								<div class="col-12 col-md-3">
-									<div class="form-group">
-										<label for="cpf">CPF</label> <input type="text"
-											class="form-control" name="cpf" placeholder="Seu CPF"
+                                        <label for="cnpj">CNPJ</label> <input type="text"
+											class="form-control" name="cnpj" placeholder="CNPJ da empresa"
 											required>
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-12 col-md-3">
+								<div class="col-12">
 									<div class="form-group">
-										<label for="ra">RA</label> <input type="text"
-											class="form-control" name="ra" placeholder="Seu RA" required>
+										<label for="email">Endereço de email</label> <input
+											type="email" class="form-control" name="email"
+											placeholder="Endereço de email da empresa" required>
 									</div>
 								</div>
-								<div class="col-12 col-md-9">
+							</div>
+							<div class="row">
+								<div class="col-12 col-md-12">
 									<div class="form-group">
 										<label for="endereco">Endereço</label> <input type="text"
 											class="form-control" name="endereco"
-											placeholder="Seu endereço" required>
+											placeholder="Endereço da empresa" required>
 									</div>
 								</div>
 							</div>
@@ -115,13 +99,13 @@
 									<div class="form-group">
 										<label for="telefone">Telefone</label> <input type="text"
 											class="form-control" name="telefone"
-											placeholder="Seu telefone" required>
+											placeholder="Telefone da empresa" required>
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="senha">Senha</label> <input type="password"
-											class="form-control" name="senha" placeholder="Sua senha"
+											class="form-control" name="senha" placeholder="Senha"
 											required>
 									</div>
 								</div>
