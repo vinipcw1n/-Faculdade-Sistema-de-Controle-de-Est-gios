@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import estagio.model.Admin;
 import estagio.model.Aluno;
 import estagio.model.Empresa;
+import estagio.repository.AdminRepository;
 import estagio.repository.AlunoRepository;
 import estagio.repository.EmpresaRepository;
 
@@ -18,6 +20,9 @@ public class LoginController {
 	
 	@Autowired
 	private EmpresaRepository empresaRepository;
+	
+	@Autowired
+	private AdminRepository adminRepository;
 	
 	@GetMapping("/")
 	public String index() {
@@ -34,6 +39,11 @@ public class LoginController {
 		return "cadastroEmpresa";
 	}
 	
+	@GetMapping("/cadastrar/admin")
+	public String cadastroAdmin() {
+		return "cadastroAdmin";
+	}
+	
 	@PostMapping("**/salvar/aluno")
 	public String salvarAluno(Aluno usuario) {
 		alunoRepository.save(usuario);
@@ -45,4 +55,11 @@ public class LoginController {
 		empresaRepository.save(usuario);
 		return "redirect:/";
 	}
+	
+	@PostMapping("**/salvar/admin")
+	public String salvarAdmin(Admin admin) {
+		adminRepository.save(admin);
+		return "redirect:/";
+	}
+	
 }
