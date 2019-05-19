@@ -29,6 +29,11 @@ public class LoginController {
 		return "login";
 	}
 	
+	@GetMapping("/paginaInicial")
+	public String paginaInicial() {
+		return "paginaInicial";
+	}
+	
 	@GetMapping("/cadastrar/aluno")
 	public String cadastroAluno() {
 		return "cadastroAluno";
