@@ -17,3 +17,5 @@ public class SistemaEstagioApplication {
 		SpringApplication.run(SistemaEstagioApplication.class, args);
 	}
 }
+
+//RF 2, 3, 8.
