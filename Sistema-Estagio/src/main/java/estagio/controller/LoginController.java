@@ -49,6 +49,11 @@ public class LoginController {
 		return "cadastroAdmin";
 	}
 	
+	@GetMapping("/curriculo")
+	public String meuCurriculo() {
+		return "curriculo";
+	}
+	
 	@PostMapping("**/salvar/aluno")
 	public String salvarAluno(Aluno usuario) {
 		alunoRepository.save(usuario);
