@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Meu Currículo - Yasta</title>
+</head>
+
+<body class="h-100 bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="/"> <img src="/img/logonav.png" width="60px">
+        </a>
+        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"><a class="nav-link" href="/perfil">Meu perfil</a></li>
+                <li class="nav-item"><a class="nav-link" href="/vagas">Vagas</a></li>
+                <li class="nav-item"><a class="nav-link" href="/meuestagio">Meu estágio</a></li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/sair">Sair</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid mt-fix h-100 bg-light">
+        <div class="container text-center py-5 h-100">
+            <div class="jumbotron py-4 h-100">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <h1>Meu Currículo</h1>
+                    </div>
+                    <div class="col-12">
+                    	<img src="/icons/curriculum.svg" width="200px">
+                    	<h5 class="mt-3">Nome</h5>
+                    	<h6 class="mb-3">email</h6>
+                    	<p>Endereço<br>Telefone</p>
+                    </div>
+                    <div class="col-12">
+                        <h2 class="py-3">Formação acadêmica</h2>
+                        <ul class="list-unstyled text-left">
+                            <li class="media">
+                            	<div class="row h-100">
+                            		<div class="col-12 col-md-8">
+		                                <img src="/icons/university.svg" width="60px" class="mr-3">
+		                                <div class="media-body">
+		                                    <h5 class="mt-0 mb-1">Engenharia de jogos eletrônicos - Universidade Descalvadense</h5>
+		                                    Nível
+		                                    <br>
+		                                    Situação
+		                                </div>
+	                                </div>
+	                                <div class="col-12 col-md-4">
+	                                	<form method="POST" action="#">
+                                            <button type="submit" name="acao" value="atender" class="btn btn-info btn-sm mt-1">Modificar</button>
+                                            <button type="submit" name="acao" value="remover" class="btn btn-danger btn-sm mt-1">Remover</button>
+										</form>
+	                                </div>
+                                </div>
+                            </li>
+                            <li class="media my-4">
+                                <img src="/icons/university.svg" width="60px" class="mr-3">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1">Ensino médio - Centro das educação tudo</h5>
+                                    Nível
+                                    <br>
+                                    Situação
+                                </div>
+                            </li>
+                            <li class="media">
+                                <img src="/icons/university.svg" width="60px" class="mr-3">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1">Ensino primário - Parquinho</h5>
+                                    Nível
+                                    <br>
+                                    Situação
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="col-12">
+                    	<h2 class="py-3">Experiência profissional</h2>
+                        <ul class="list-unstyled text-left">
+                            <li class="media">
+                                <img src="/icons/work.svg" width="60px" class="mr-3">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1">ZikaCorps - DevOps</h5>
+                                    Data de Admissão - Data de Demissão
+                                    <br>
+                                    Tarefas realizadas
+                                </div>
+                            </li>
+                            <li class="media my-4">
+                                <img src="/icons/work.svg" width="60px" class="mr-3">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1">UntilWhen Games - Game Developer</h5>
+                                    Data de Admissão - Data de Demissão
+                                    <br>
+                                    Tarefas realizadas
+                                </div>
+                            </li>
+                            <li class="media">
+                                <img src="/icons/work.svg" width="60px" class="mr-3">
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-1">Memes - Meme maker</h5>
+                                    Data de Admissão - Data de Demissão
+                                    <br>
+                                    Tarefas realizadas
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-dark text-white">
+        <div class="container pt-4">
+            <div class="container-fluid">
+                <p>
+                    Yasta - Sistema de estágios<br>Desenvolvido por: Fabricio
+                    Rocha, Gabriel Zutião, Jady Domingues, Leonardo Cerminaro e
+                    Vinícius Perna<br>2019
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(() => {
+            $("#dataIngresso").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                dateFormat: 'dd/mm/yy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+        })
+    </script>
+</body>
+
+</html>

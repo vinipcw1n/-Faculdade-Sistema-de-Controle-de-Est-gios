@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2164"
+   viewBox="0 0 336.95 283.02"
+   version="1.0"
+   sodipodi:docname="work.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="718"
+     id="namedview12"
+     showgrid="false"
+     inkscape:zoom="0.41693168"
+     inkscape:cx="552.18027"
+     inkscape:cy="125.46675"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2164"
+     inkscape:pagecheckerboard="true" />
+  <path
+     style="fill-rule:evenodd"
+     inkscape:connector-curvature="0"
+     class="fil1"
+     d="M 6.76,194.784 C 18.37,178.054 97.42,64.294 105.89,54.124 114.36,43.962 133.96561,39.184188 155.99561,51.893188 120.60982,103.24701 89.805243,143.34727 47.862039,203.52805 30.912039,225.55805 -4.86,211.504 6.76,194.784 Z"
+     id="path1941"
+     sodipodi:nodetypes="ccccc" />
+  <polygon
+     style="fill-rule:evenodd"
+     class="fil1"
+     transform="matrix(1.8375,0,0,1.8375,0.01,-262.726)"
+     points="33.518,280.71 11.813,293.05 17.073,268.93 106.83,145.76 123.27,157.54 "
+     id="polygon1945" />
+  <path
+     style="fill-rule:evenodd"
+     inkscape:connector-curvature="0"
+     class="fil1"
+     d="m 194.2,77.354 c 41.58,26.66 95.79,62.05 103.18,66.59 10.92,6.72 29.35,9.28 39.57,9.32 v 82.36 c -49.14,0.9 -217.6,5.13 -244.71,5.65 -30.37,0.59 -38.14,-45.97 0,-47.66 38.14,-1.7 50.08,-2.22 62.79,-5.61 12.71,-3.39 31.11,-13.76 18.64,-31.35 -7.8,-11.01 -13.67,-19.61 -18.64,-25.55 z"
+     id="path1949" />
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
+        <dc:publisher>
+          <cc:Agent
+             rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>mano con penna - hand and pen</dc:title>
+        <dc:date>2007-04-30T03:51:23</dc:date>
+        <dc:description>clip art, clipart, icon, icon, image, media, people, people, png, public domain, svg, work, work, </dc:description>
+        <dc:source>http://openclipart.org/detail/4219/mano-con-penna---hand-and-pen-by-ernes</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>ernes</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>image</rdf:li>
+            <rdf:li>media</rdf:li>
+            <rdf:li>people</rdf:li>
+            <rdf:li>png</rdf:li>
+            <rdf:li>public domain</rdf:li>
+            <rdf:li>svg</rdf:li>
+            <rdf:li>work</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/publicdomain/zero/1.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>
