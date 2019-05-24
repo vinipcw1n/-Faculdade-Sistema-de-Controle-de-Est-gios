@@ -24,10 +24,10 @@ public class LoginController {
 	@Autowired
 	private AdminRepository adminRepository;
 	
-	@GetMapping("/")
-	public String index() {
-		return "login";
-	}
+//	@GetMapping("/")
+//	public String index() {
+//		return "login";
+//	}
 	
 	@GetMapping("/paginaInicial")
 	public String paginaInicial() {
@@ -56,18 +56,21 @@ public class LoginController {
 	
 	@PostMapping("**/salvar/aluno")
 	public String salvarAluno(Aluno usuario) {
+		usuario.setRole(Long.parseLong("0"));
 		alunoRepository.save(usuario);
 		return "redirect:/";
 	}
 	
 	@PostMapping("**/salvar/empresa")
 	public String salvarEmpresa(Empresa usuario) {
+		usuario.setRole(Long.parseLong("1"));
 		empresaRepository.save(usuario);
 		return "redirect:/";
 	}
 	
 	@PostMapping("**/salvar/admin")
 	public String salvarAdmin(Admin admin) {
+		admin.setRole(Long.parseLong("3"));
 		adminRepository.save(admin);
 		return "redirect:/";
 	}
