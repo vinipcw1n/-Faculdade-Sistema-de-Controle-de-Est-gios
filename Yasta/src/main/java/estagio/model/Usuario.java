@@ -13,6 +13,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -41,6 +42,9 @@ public abstract class Usuario implements UserDetails{
 	private String estado;
 	
 	private String cep;
+	
+	@Value("1")
+	private boolean aprovado;
 	
 	@ManyToOne
 	@JoinColumn(name = "role_id")
@@ -128,6 +132,14 @@ public abstract class Usuario implements UserDetails{
 		this.role = role;
 	}
 
+	public boolean isAprovado() {
+		return aprovado;
+	}
+
+	public void setAprovado(boolean aprovado) {
+		this.aprovado = aprovado;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -168,8 +180,7 @@ public abstract class Usuario implements UserDetails{
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return true;
+		return aprovado;
 	}
 	
 }

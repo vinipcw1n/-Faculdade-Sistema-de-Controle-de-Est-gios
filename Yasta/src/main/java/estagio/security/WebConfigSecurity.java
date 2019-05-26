@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import estagio.configuration.PopularBanco;
 import estagio.security.ImplementacaoUserDetailService;
 
 @Configuration
@@ -26,15 +27,17 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
 		.disable() //Desativa as configurações padrões de memória.
 		.authorizeRequests() //Permitir/restringir acessos.
 		.antMatchers(HttpMethod.GET, "/cadastrar/**").permitAll()
+		.antMatchers(HttpMethod.POST, "/cadastrar/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/salvar/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/salvar/**").permitAll()
 		//.antMatchers(HttpMethod.GET, "/menu").hasAnyRole("ADMIN", "GERENTE", "ALMOXARIFE", "VENDEDOR")
 		
 		.anyRequest().authenticated()
 		.and().formLogin().permitAll() //Permite qualquer usuário
-		.loginPage("/")
-		.defaultSuccessUrl("/paginaInicial")
-		.failureUrl("/?error=true")
-		.and().logout().logoutSuccessUrl("/") //Mapeia URL de Logout e invalída usuário autenticado
+		.loginPage("/login")
+		.defaultSuccessUrl("/")
+		.failureUrl("/login?error=true")
+		.and().logout().logoutSuccessUrl("/login") //Mapeia URL de Logout e invalída usuário autenticado
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 	}
 	

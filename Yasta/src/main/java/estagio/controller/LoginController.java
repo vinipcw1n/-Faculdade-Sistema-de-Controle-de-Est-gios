@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import estagio.configuration.PopularBanco;
 import estagio.model.Admin;
 import estagio.model.Aluno;
 import estagio.model.Empresa;
@@ -29,7 +30,7 @@ public class LoginController {
 //		return "login";
 //	}
 	
-	@GetMapping("/paginaInicial")
+	@GetMapping("/")
 	public String paginaInicial() {
 		return "paginaInicial";
 	}
@@ -49,28 +50,20 @@ public class LoginController {
 		return "cadastroAdmin";
 	}
 	
-	@GetMapping("/curriculo")
-	public String meuCurriculo() {
-		return "curriculo";
-	}
-	
 	@PostMapping("**/salvar/aluno")
 	public String salvarAluno(Aluno usuario) {
-		usuario.setRole(Long.parseLong("0"));
 		alunoRepository.save(usuario);
 		return "redirect:/";
 	}
 	
 	@PostMapping("**/salvar/empresa")
 	public String salvarEmpresa(Empresa usuario) {
-		usuario.setRole(Long.parseLong("1"));
 		empresaRepository.save(usuario);
 		return "redirect:/";
 	}
 	
 	@PostMapping("**/salvar/admin")
 	public String salvarAdmin(Admin admin) {
-		admin.setRole(Long.parseLong("3"));
 		adminRepository.save(admin);
 		return "redirect:/";
 	}

@@ -18,8 +18,8 @@
 
 <body class="h-100 bg-dark">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		<a class="navbar-brand" href="/"> <img
-			src="/img/logonav.png" width="60px">
+		<a class="navbar-brand" href="/"> <img src="/img/logonav.png"
+			width="60px">
 		</a>
 		<button class="navbar-toggler" data-target="#my-nav"
 			data-toggle="collapse" aria-controls="my-nav" aria-expanded="false"
@@ -38,9 +38,9 @@
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastrar</a>
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="/cadastrar/aluno">Aluno</a> 
-						<a class="dropdown-item" href="/cadastrar/empresa">Empresa</a>
-						<a class="dropdown-item" href="/cadastrar/admin">Admin</a>
+						<a class="dropdown-item" href="/cadastrar/aluno">Aluno</a> <a
+							class="dropdown-item" href="/cadastrar/empresa">Empresa</a> <a
+							class="dropdown-item" href="/cadastrar/admin">Admin</a>
 					</div></li>
 			</ul>
 		</div>
@@ -67,13 +67,13 @@
 										<input type="text" class="form-control"
 											placeholder="Nome da empresa" aria-label="Nome completo"
 											name="nome" aria-describedby="basic-addon1" required>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
+									</div>
+								</div>
+								<div class="col-12 col-md-3">
 									<div class="form-group">
-                                        <label for="cnpj">CNPJ</label> <input type="text"
-											class="form-control" name="cnpj" placeholder="CNPJ da empresa"
-											required>
+										<label for="cnpj">CNPJ</label> <input type="text"
+											class="form-control" name="cnpj"
+											placeholder="CNPJ da empresa" required>
 									</div>
 								</div>
 							</div>
@@ -104,8 +104,8 @@
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="estado">Estado</label> <input type="text"
-											class="form-control" name="estado"
-											placeholder="Estado" required>
+											class="form-control" name="estado" placeholder="Estado"
+											required>
 									</div>
 								</div>
 							</div>
@@ -113,15 +113,14 @@
 								<div class="col-8">
 									<div class="form-group">
 										<label for="cidade">Cidade</label> <input type="text"
-											class="form-control" name="cidade"
-											placeholder="Cidade" required>
+											class="form-control" name="cidade" placeholder="Cidade"
+											required>
 									</div>
 								</div>
 								<div class="col-4">
 									<div class="form-group">
 										<label for="cep">CEP</label> <input type="text"
-											class="form-control" name="cep"
-											placeholder="CEP" required>
+											class="form-control" name="cep" placeholder="CEP" required>
 									</div>
 								</div>
 							</div>
@@ -138,13 +137,14 @@
 										<label for="senha">Senha</label> <input type="password"
 											class="form-control" name="senha" placeholder="Senha"
 											required>
+										<!-- Cargo -->
+										<input type="text" name="role" value="1" hidden="true">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12 text-center">
-									<a href="/"><button type="button"
-											class="btn btn-info mt-4">Voltar</button></a>
+									<a href="/"><button type="button" class="btn btn-info mt-4">Voltar</button></a>
 									<button type="submit" class="btn btn-info mt-4">Cadastrar</button>
 								</div>
 							</div>
