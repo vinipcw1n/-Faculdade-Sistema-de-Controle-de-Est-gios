@@ -1,10 +1,14 @@
 package estagio.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.ColumnDefault;
+import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 public class Vaga {
@@ -16,15 +20,14 @@ public class Vaga {
 	@ManyToOne
 	private Empresa empresa;
 	
-	private int qtd;
-	
 	private String descricao;
 	
 	private String requisitosObrigatorios;
 	
 	private String requisitosDesejaveis;
 	
-	private boolean aberta;
+	@ColumnDefault(value = "1")
+	private boolean aberta = true;
 
 	public Long getId() {
 		return id;
@@ -41,15 +44,7 @@ public class Vaga {
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
 	}
-
-	public int getQtd() {
-		return qtd;
-	}
-
-	public void setQtd(int qtd) {
-		this.qtd = qtd;
-	}
-
+	
 	public String getDescricao() {
 		return descricao;
 	}

@@ -1,114 +1,130 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
-    <title>Cadastro de Vaga - Yasta</title>
+<title>Cadastro de Vaga - Yasta</title>
 </head>
 
 <body class="h-100 bg-dark">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="/"> <img src="/img/logonav.png" width="60px">
-        </a>
-        <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="my-nav" class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active"><a class="nav-link" href="/perfil">Meu perfil</a></li>
-                <li class="nav-item"><a class="nav-link" href="/minhasVagas">Minhas vagas</a></li>
-                <li class="nav-item"><a class="nav-link" href="/meusEstagios">Meus estágios</a></li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/sair">Sair</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container-fluid mt-fix h-100 bg-light">
-        <div class="container text-center py-5 h-100">
-            <img class="img-fluid notDraggable" src="/img/logo2.png" width="200rem" alt="">
-            <div class="jumbotron mt-5 py-4 h-100">
-                <div class="row">
-                    <div class="col-12 mb-2">
-                        <h1>Cadastro de Vaga</h1>
-                    </div>
-                    <div class="col-12">
-                        <form class="text-left" method="post" action="salvar/vaga">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <label for="descricao">Descrição da vaga</label> <input type="text"
-                                            class="form-control" name="descricao" placeholder="Descrição da vaga"
-                                            required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label for="requisitosObrigatorios">Requisitos Obrigatórios</label>
-                                            <textarea class="form-control" id="requisitosObrigatorios" rows="3"
-                                                style="resize: none" required></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label for="requisitosDesejaveis">Requisitos Desejáveis</label>
-                                            <textarea class="form-control" id="requisitosDesejaveis" rows="3"
-                                                style="resize: none" required></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 text-center">
-                                    <a href="/administrarVagas"><button type="button"
-                                            class="btn btn-info mt-4">Voltar</button></a>
-                                    <button type="submit" class="btn btn-info mt-4">Cadastrar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="container-fluid bg-dark text-white">
-        <div class="container pt-4">
-            <div class="container-fluid">
-                <p>
-                    Yasta - Sistema de estágios<br>Desenvolvido por: Fabricio
-                    Rocha, Gabriel Zutião, Jady Domingues, Leonardo Cerminaro e
-                    Vinícius Perna<br>2019
-                </p>
-            </div>
-        </div>
-    </footer>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="/"> <img src="/img/logonav.png"
+			width="60px">
+		</a>
+		<button class="navbar-toggler" data-target="#my-nav"
+			data-toggle="collapse" aria-controls="my-nav" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="my-nav" class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="/perfil">Meu
+						perfil</a></li>
+				<li class="nav-item"><a class="nav-link" href="/minhasVagas">Minhas
+						vagas</a></li>
+				<li class="nav-item"><a class="nav-link" href="/meusEstagios">Meus
+						estágios</a></li>
+			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item"><a class="nav-link" href="/sair">Sair</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid mt-fix h-100 bg-light">
+		<div class="container text-center py-5 h-100">
+			<img class="img-fluid notDraggable" src="/img/logo2.png"
+				width="200rem" alt="">
+			<div class="jumbotron mt-5 py-4 h-100">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<h1>Cadastro de Vaga</h1>
+					</div>
+					<div class="col-12">
+						<form class="text-left" method="post" action="salvar/vaga" th:object="${vagaObj}">
+							<div class="row">
+								<div class="col-12">
+									<div class="form-group">
+										<label for="descricao">Descrição da vaga</label> <input
+											type="text" class="form-control" name="descricao" th:field="*{descricao}"
+											placeholder="Descrição da vaga" required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="form-group">
+										<div class="form-group">
+											<label for="requisitosObrigatorios">Requisitos
+												Obrigatórios</label>
+											<textarea class="form-control" id="requisitosObrigatorios"
+												rows="3" style="resize: none" name="requisitosObrigatorios" th:field="*{requisitosObrigatorios}" required></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="form-group">
+										<div class="form-group">
+											<label for="requisitosDesejaveis">Requisitos
+												Desejáveis</label>
+											<textarea class="form-control" id="requisitosDesejaveis"
+												rows="3" style="resize: none" name="requisitosDesejaveis" th:field="*{requisitosDesejaveis}" required></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12 text-center">
+									<a href="/administrarVagas"><button type="button"
+											class="btn btn-info mt-4">Voltar</button></a>
+									<button type="submit" class="btn btn-info mt-4">Cadastrar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="container-fluid bg-dark text-white">
+		<div class="container pt-4">
+			<div class="container-fluid">
+				<p>
+					Yasta - Sistema de estágios<br>Desenvolvido por: Fabricio
+					Rocha, Gabriel Zutião, Jady Domingues, Leonardo Cerminaro e
+					Vinícius Perna<br>2019
+				</p>
+			</div>
+		</div>
+	</footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <link href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
-    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<link
+		href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
+		rel="Stylesheet" type="text/css" />
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
 
-    <script type="text/javascript">
+	<script type="text/javascript">
         $(() => {
             $("#dataIngresso").datepicker({
                 changeYear: true,

@@ -9,5 +9,5 @@ import estagio.model.Curriculo;
 @Repository
 @Transactional
 public interface CurriculoRepository extends CrudRepository<Curriculo, Long>{
-
+	
 }
