@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Formacao {
@@ -19,6 +22,10 @@ public class Formacao {
 	private String nivel;
 	
 	private String situacao;
+	
+	@ManyToOne
+	@JoinColumn(name = "curriculo_id")
+	private Curriculo curriculo;
 	
 	public Long getId() {
 		return id;
@@ -50,5 +57,12 @@ public class Formacao {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
+	public Curriculo getCurriculo() {
+		return curriculo;
+	}
+	public void setCurriculo(Curriculo curriculo) {
+		this.curriculo = curriculo;
+	}
+	
 	
 }

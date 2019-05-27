@@ -6,6 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Experiencia {
@@ -23,7 +26,11 @@ public class Experiencia {
 	private LocalDate dataDemissao;
 	
 	private String tarefasRealizadas;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "curriculo_id")
+	private Curriculo curriculo;
+	
 	public Long getId() {
 		return id;
 	}
@@ -70,6 +77,14 @@ public class Experiencia {
 
 	public void setTarefasRealizadas(String tarefasRealizadas) {
 		this.tarefasRealizadas = tarefasRealizadas;
+	}
+
+	public Curriculo getCurriculo() {
+		return curriculo;
+	}
+
+	public void setCurriculo(Curriculo curriculo) {
+		this.curriculo = curriculo;
 	}
 	
 	

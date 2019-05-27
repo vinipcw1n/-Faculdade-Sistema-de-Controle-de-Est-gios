@@ -34,19 +34,26 @@ public class AlunoController {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		Aluno aluno = alunoRepository.findAlunoByEmail(authentication.getName());
 		modelAndView.addObject("alunoObj", aluno);
+		modelAndView.addObject("formacoes", aluno.getCurriculo().getFormacaoAcademica());
+		modelAndView.addObject("experiencias", aluno.getCurriculo().getExperienciaProfissional());
 		return modelAndView;
 	}
 	
-	
-	@PostMapping("/salvar/Formacao")
+	@PostMapping("**/salvar/formacao")
 	public String salvarFormacao(Formacao formacao) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Aluno aluno = alunoRepository.findAlunoByEmail(authentication.getName());
+		formacao.setCurriculo(aluno.getCurriculo());
 		formacaoRepository.save(formacao);
-		return "curriculo";
+		return "redirect:/curriculo";
 	}
 	
-	@PostMapping("/salvar/Experiencia")
+	@PostMapping("**/salvar/experiencia")
 	public String salvarExperiencia(Experiencia experiencia) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Aluno aluno = alunoRepository.findAlunoByEmail(authentication.getName());
+		experiencia.setCurriculo(aluno.getCurriculo());
 		experienciaRepository.save(experiencia);
-		return "curriculo";
+		return "redirect:/curriculo";
 	}
 }
