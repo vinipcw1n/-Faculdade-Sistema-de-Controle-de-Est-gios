@@ -10,7 +10,7 @@ import estagio.model.Empresa;
 
 @Repository
 @Transactional
-public interface EmpresaRepository  extends CrudRepository<Empresa, Long>{
+public interface EmpresaRepository extends CrudRepository<Empresa, Long>{
 	@Query("SELECT e FROM Empresa e WHERE email = ?1")
 	Empresa findEmpresaByEmail(String email);
 }

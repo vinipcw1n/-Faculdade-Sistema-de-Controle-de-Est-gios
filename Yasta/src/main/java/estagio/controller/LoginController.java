@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import estagio.configuration.PopularBanco;
 import estagio.model.Admin;
 import estagio.model.Aluno;
+import estagio.model.Curriculo;
 import estagio.model.Empresa;
 import estagio.repository.AdminRepository;
 import estagio.repository.AlunoRepository;
+import estagio.repository.CurriculoRepository;
 import estagio.repository.EmpresaRepository;
 
 @Controller
@@ -24,6 +26,9 @@ public class LoginController {
 	
 	@Autowired
 	private AdminRepository adminRepository;
+	
+	@Autowired
+	private CurriculoRepository curriculoRepository;
 	
 //	@GetMapping("/")
 //	public String index() {
@@ -52,6 +57,10 @@ public class LoginController {
 	
 	@PostMapping("**/salvar/aluno")
 	public String salvarAluno(Aluno usuario) {
+		Curriculo curriculo = new Curriculo();		
+		curriculo = curriculoRepository.save(curriculo);
+		
+		usuario.setCurriculo(curriculo);
 		alunoRepository.save(usuario);
 		return "redirect:/";
 	}

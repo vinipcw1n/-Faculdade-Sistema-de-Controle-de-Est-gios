@@ -20,7 +20,7 @@ public class Curriculo {
 	
 	@OneToMany
 	private List<Experiencia> experienciaProfissional;
-
+	
 	public Long getId() {
 		return id;
 	}
