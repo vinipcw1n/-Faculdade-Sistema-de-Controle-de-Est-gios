@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8">
@@ -43,59 +43,15 @@
                                 <h1>Usuários aguardando aprovação</h1>
                             </div>
                         </div>
-                        <ul class="list-unstyled text-left">
+                        <ul class="list-unstyled text-left" th:each="user : ${usuariosNaoAprovados}">
                             <div class="row">
                                 <div class="col-12 col-md-8">
                                     <li class="media">
                                         <img src="/icons/user.svg" width="60px" class="mr-3">
                                         <div class="media-body">
-                                            <h5 class="mt-0 mb-1">Astolfo
-                                            </h5>
-                                            CPF
+                                            <h5 class="mt-0 mb-1" th:text="${user.nome}"></h5>
                                             <br>
-                                            Email
-                                        </div>
-                                    </li>
-                                </div>
-                                <div class="col-12 col-md-4 text-right">
-                                    <form method="POST" action="#">
-                                        <button type="submit" name="acao" value="aprovar"
-                                            class="btn btn-info btn-sm mt-1">Aprovar</button>
-                                        <button type="submit" name="acao" value="negar"
-                                            class="btn btn-danger btn-sm mt-1">Negar</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-md-8">
-                                    <li class="media my-4">
-                                        <img src="/icons/user.svg" width="60px" class="mr-3">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">Ronaldo</h5>
-                                            CPF
-                                            <br>
-                                            Email
-                                        </div>
-                                    </li>
-                                </div>
-                                <div class="col-12 col-md-4 text-right">
-                                    <form method="POST" action="#">
-                                        <button type="submit" name="acao" value="aprovar"
-                                            class="btn btn-info btn-sm mt-1">Aprovar</button>
-                                        <button type="submit" name="acao" value="negar"
-                                            class="btn btn-danger btn-sm mt-1">Negar</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-md-8">
-                                    <li class="media">
-                                        <img src="/icons/user.svg" width="60px" class="mr-3">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">Afonso</h5>
-                                            CPF
-                                            <br>
-                                            Email
+                                            <span th:text="${user.endereco}"></span>
                                         </div>
                                     </li>
                                 </div>
@@ -118,64 +74,21 @@
                                 <button type="button" class="btn btn-success btn-sm dropdown-toggle"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Adicionar</button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="/cadastrar/aluno">Aluno</a> 
+                                    <a class="dropdown-item" href="/cadastrar/aluno">Aluno</a>
                                     <a class="dropdown-item" href="/cadastrar/empresa">Empresa</a>
                                     <a class="dropdown-item" href="/cadastrar/admin">Admin</a>
                                 </div>
                             </div>
                         </div>
-                        <ul class="list-unstyled text-left">
+                        <ul class="list-unstyled text-left" th:each="user : ${users}">
                             <div class="row">
                                 <div class="col-12 col-md-8">
                                     <li class="media">
                                         <img src="/icons/user.svg" width="60px" class="mr-3">
                                         <div class="media-body">
-                                            <h5 class="mt-0 mb-1">Roberto</h5>
-                                            CPF
+                                            <h5 class="mt-0 mb-1" th:text="${user.nome}"></h5>
                                             <br>
-                                            Email
-                                        </div>
-                                    </li>
-                                </div>
-                                <div class="col-12 col-md-4 text-right">
-                                    <form method="POST" action="#">
-                                        <button type="submit" name="acao" value="modificar"
-                                            class="btn btn-info btn-sm mt-1">Modificar</button>
-                                        <button type="submit" name="acao" value="remover"
-                                            class="btn btn-danger btn-sm mt-1">Remover</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-md-8">
-                                    <li class="media my-4">
-                                        <img src="/icons/user.svg" width="60px" class="mr-3">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">Reynaldo</h5>
-                                            CPF
-                                            <br>
-                                            Email
-                                        </div>
-                                    </li>
-                                </div>
-                                <div class="col-12 col-md-4 text-right">
-                                    <form method="POST" action="#">
-                                        <button type="submit" name="acao" value="modificar"
-                                            class="btn btn-info btn-sm mt-1">Modificar</button>
-                                        <button type="submit" name="acao" value="remover"
-                                            class="btn btn-danger btn-sm mt-1">Remover</button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-md-8">
-                                    <li class="media">
-                                        <img src="/icons/user.svg" width="60px" class="mr-3">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1">Armando</h5>
-                                            CPF
-                                            <br>
-                                            Email
+                                            <span th:text="${user.endereco}"></span>
                                         </div>
                                     </li>
                                 </div>
@@ -205,117 +118,6 @@
             </div>
         </div>
     </footer>
-
-    <div class="modal fade" id="modalFormacao" tabindex="-1" role="dialog" aria-labelledby="modalFormacao"
-        aria-hidden="true">
-        <form method="POST" action="salvar/formacao" id="cadForm">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Cadastrar Formação Acadêmica</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="curso">Curso: </label>
-                                <input type="text" class="form-control" id="curso" placeholder="Nome do curso"
-                                    name="nome" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="instituicao">Instituição: </label>
-                                <input type="text" class="form-control" id="instituicao" placeholder="Instituição"
-                                    name="instituicao" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="nivel">Nível: </label>
-                                <select name="nivel" form="cadForm" id="nivel" class="form-control" required>
-                                    <option value="Ensino médio">Ensino médio</option>
-                                    <option value="Ensino técnico">Ensino técnico</option>
-                                    <option value="Graduação">Graduação</option>
-                                    <option value="Pós-graduação">Pós-graduação</option>
-                                    <option value="Mestrado">Mestrado</option>
-                                    <option value="Doutorado">Doutorado</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="situacao">Situação: </label>
-                                <input type="text" class="form-control" id="situacao" placeholder="Situação"
-                                    name="situacao" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-success">Enviar</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="modal fade" id="modalExperiencia" tabindex="-1" role="dialog" aria-labelledby="modalExperiencia"
-        aria-hidden="true">
-        <form method="POST" action="salvar/experiencia" id="cadExp">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Cadastrar Experiência Profissional</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="empresa">Empresa: </label>
-                                <input type="text" class="form-control" id="empresa" placeholder="Nome da empresa"
-                                    name="nome" required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="funcao">Função: </label>
-                                <input type="text" class="form-control" id="funcao" placeholder="Função" name="funcao"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="dataAdmissao">Data de admissão</label> <input type="text"
-                                        class="form-control" name="dataAdmissao" placeholder="Data de admissão"
-                                        id="dataAdmissao" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-md-6">
-                                <div class="form-group">
-                                    <label for="dataDemissao">Data de demissão</label> <input type="text"
-                                        class="form-control" name="dataDemissao" placeholder="Data de demissão"
-                                        id="dataDemissao" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-12">
-                                <label for="tarefasRealizadas">Tarefas realizadas: </label>
-                                <textarea class="form-control" id="tarefasRealizadas" rows="3" style="resize: none"
-                                    required></textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <button type="submit" class="btn btn-success">Enviar</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <link href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
