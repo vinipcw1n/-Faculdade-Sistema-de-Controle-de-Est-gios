@@ -1,6 +1,8 @@
 package estagio.model;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -58,17 +60,21 @@ public class Experiencia {
 	public LocalDate getDataAdmissao() {
 		return dataAdmissao;
 	}
-
-	public void setDataAdmissao(LocalDate dataAdmissao) {
-		this.dataAdmissao = dataAdmissao;
+	
+	public void setDataAdmissao(String dataAdmissao) {
+		String[] data = dataAdmissao.split("/");
+		LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+		this.dataAdmissao = dataFinal;
 	}
 
 	public LocalDate getDataDemissao() {
 		return dataDemissao;
 	}
 
-	public void setDataDemissao(LocalDate dataDemissao) {
-		this.dataDemissao = dataDemissao;
+	public void setDataDemissao(String dataDemissao) {
+		String[] data = dataDemissao.split("/");
+		LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+		this.dataDemissao = dataFinal;
 	}
 
 	public String getTarefasRealizadas() {

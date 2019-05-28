@@ -128,8 +128,8 @@
 													th:text="${experiencia.funcao}"></label>
 											</h5>
 											<span>Data de admissão: </span><label
-												th:text="${experiencia.dataAdmissao}"></label><br> <span>Data
-												de demissão: </span><label th:text="${experiencia.dataDemissao}"></label><br>
+												th:text="${#temporals.format(experiencia.dataAdmissao, 'dd/MM/yyyy')}"></label><br> <span>Data
+												de demissão: </span><label th:text="${#temporals.format(experiencia.dataDemissao,'dd/MM/yyyy')}"></label><br>
 											<span>Tarefas realizadas: </span><label
 												th:text="${experiencia.tarefasRealizadas}"></label>
 										</div></li>
@@ -144,9 +144,9 @@
 										<div class="funcao" th:text="${experiencia.funcao}"
 											style="display: none;"></div>
 										<div class="dataAdmissao"
-											th:text="${experiencia.dataAdmissao}" style="display: none;"></div>
+											th:text="${#temporals.format(experiencia.dataAdmissao, 'dd/MM/yyyy')}" style="display: none;"></div>
 										<div class="dataDemissao"
-											th:text="${experiencia.dataDemissao}" style="display: none;"></div>
+											th:text="${#temporals.format(experiencia.dataDemissao,'dd/MM/yyyy')}" style="display: none;"></div>
 										<div class="tarefasRealizadas"
 											th:text="${experiencia.tarefasRealizadas}"
 											style="display: none;"></div>
@@ -226,7 +226,7 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Fechar</button>
-						<button type="submit" class="btn btn-success">Enviar</button>
+						<button type="submit" id="enviarFormacao" class="btn btn-success">Enviar</button>
 					</div>
 				</div>
 			</div>
@@ -295,7 +295,7 @@
 	<!-- Modal de edição -->
 	<div class="modal fade" id="modalFormacaoEditar" tabindex="-1"
 		role="dialog" aria-labelledby="modalFormacaoEditar" aria-hidden="true">
-		<form method="POST" action="salvar/formacao" id="cadForm">
+		<form method="POST" action="salvar/formacao" id="cadFormEditar">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -320,7 +320,7 @@
 						<div class="row">
 							<div class="form-group col-12">
 								<label for="nivel">Nível: </label> <select name="nivel"
-									form="cadForm" id="nivel" class="form-control" required>
+									form="cadFormEditar" id="nivel" class="form-control" required>
 									<option th:value="0" disabled selected>Selecione</option>
 									<option th:value="EnsinoMedio">Ensino médio</option>
 									<option th:value="EnsinoTecnico">Ensino técnico</option>
@@ -352,7 +352,7 @@
 	<div class="modal fade" id="modalExperienciaEditar" tabindex="-1"
 		role="dialog" aria-labelledby="modalExperienciaEditar"
 		aria-hidden="true">
-		<form method="POST" action="salvar/experiencia" id="cadExp">
+		<form method="POST" action="salvar/experiencia" id="cadExpEditar">
 			<div class="modal-dialog modal-dialog-centered" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -449,22 +449,6 @@
         })
         
         $(document).ready(function () {
-		    $(".alterarFormacao").click(function () {
-		        id = $(this).siblings(".id").html();
-		        instituicao = $(this).siblings(".instituicao").html();
-		        curso = $(this).siblings(".curso").html();
-		        nivel = $(this).siblings(".nivel").html();
-		        situacao = $(this).siblings(".situacao").html();
-
-		        $("#modalFormacaoEditar #id").val(id);
-		        $("#modalFormacaoEditar #instituicao").val(instituicao);
-		        $("#modalFormacaoEditar #curso").val(curso);
-		        $("#modalFormacaoEditar #nivel").val(nivel).change();
-		        $("#modalFormacaoEditar #situacao").val(situacao);
-		    });
-		});
-        
-        $(document).ready(function () {
     		$(".alterarExperiencia").click(function () {
 		        id = $(this).siblings(".id").html();
 		        empresa = $(this).siblings(".empresa").html();
@@ -480,6 +464,20 @@
 		        $("#modalExperienciaEditar #dataDemissaoEdicao").val(dataDemissao);
 		        $("#modalExperienciaEditar #tarefasRealizadas").val(tarefasRealizadas);
     		});
+    		
+    		$(".alterarFormacao").click(function () {
+		        id = $(this).siblings(".id").html();
+		        instituicao = $(this).siblings(".instituicao").html();
+		        curso = $(this).siblings(".curso").html();
+		        nivel = $(this).siblings(".nivel").html();
+		        situacao = $(this).siblings(".situacao").html();
+
+		        $("#modalFormacaoEditar #id").val(id);
+		        $("#modalFormacaoEditar #instituicao").val(instituicao);
+		        $("#modalFormacaoEditar #curso").val(curso);
+		        $("#modalFormacaoEditar #nivel").val(nivel).change();
+		        $("#modalFormacaoEditar #situacao").val(situacao);
+		    });
  		});
 
     </script>
