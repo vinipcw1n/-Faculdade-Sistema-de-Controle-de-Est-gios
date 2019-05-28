@@ -77,7 +77,7 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/menu")
+	@GetMapping("**/menu")
 	public String menu() {
 		return "menu";
 	}
