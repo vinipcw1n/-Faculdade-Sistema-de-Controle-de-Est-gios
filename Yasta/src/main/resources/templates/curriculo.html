@@ -17,7 +17,7 @@
 <title>Meu Currículo - Yasta</title>
 </head>
 
-<body th:object="${alunoObj}" class="h-100 bg-dark">
+<body class="h-100 bg-dark">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<a class="navbar-brand" href="/"> <img src="/img/logonav.png"
 			width="60px">
@@ -40,7 +40,8 @@
 			</ul>
 		</div>
 	</nav>
-	<div class="container-fluid mt-fix h-100 bg-light">
+	<div th:object="${alunoObj}"
+		class="container-fluid mt-fix h-100 bg-light">
 		<div class="container text-center py-5 h-100">
 			<div class="jumbotron py-4 h-100">
 				<div class="row">
@@ -102,6 +103,8 @@
 											class="btn btn-danger btn-sm mt-1">Remover</button>
 									</form>
 								</div>
+								<hr>
+								<hr>
 							</div>
 						</ul>
 					</div>
@@ -134,19 +137,25 @@
 								<div class="col-12 col-md-4 text-right">
 									<form method="POST" action="#">
 
-										<div class="id" th:text="${experiencia.id}" style="display: none;"></div>
-										<div class="empresa" th:text="${experiencia.empresa}" style="display: none;"></div>
-										<div class="funcao" th:text="${experiencia.funcao}" style="display: none;"></div>
-										<div class="dataAdmissao" th:text="${experiencia.dataAdmissao}" style="display: none;"></div>
-										<div class="dataDemissao" th:text="${experiencia.dataDemissao}" style="display: none;"></div>
-										<div class="tarefasRealizadas" th:text="${experiencia.tarefasRealizadas}" style="display: none;"></div>
+										<div class="id" th:text="${experiencia.id}"
+											style="display: none;"></div>
+										<div class="empresa" th:text="${experiencia.empresa}"
+											style="display: none;"></div>
+										<div class="funcao" th:text="${experiencia.funcao}"
+											style="display: none;"></div>
+										<div class="dataAdmissao"
+											th:text="${experiencia.dataAdmissao}" style="display: none;"></div>
+										<div class="dataDemissao"
+											th:text="${experiencia.dataDemissao}" style="display: none;"></div>
+										<div class="tarefasRealizadas"
+											th:text="${experiencia.tarefasRealizadas}"
+											style="display: none;"></div>
 
 										<button type="button"
 											class="alterarExperiencia btn btn-info btn-sm mt-1"
 											data-toggle="modal" data-target="#modalExperienciaEditar">Modificar</button>
 										<button type="submit" name="acao" value="remover"
 											class="btn btn-danger btn-sm mt-1">Remover</button>
-										>
 									</form>
 								</div>
 							</div>
@@ -196,10 +205,11 @@
 							<div class="form-group col-12">
 								<label for="nivel">Nível: </label> <select name="nivel"
 									form="cadForm" id="nivel" class="form-control" required>
-									<option th:value="EnsinoMédio">Ensino médio</option>
-									<option th:value="EnsinoTécnico">Ensino técnico</option>
-									<option th:value="Graduação">Graduação</option>
-									<option th:value="Pós-graduação">Pós-graduação</option>
+									<option th:value="0" disabled selected>Selecione</option>
+									<option th:value="EnsinoMedio">Ensino médio</option>
+									<option th:value="EnsinoTecnico">Ensino técnico</option>
+									<option th:value="Graduacao">Graduação</option>
+									<option th:value="PosGraduacao">Pós-graduação</option>
 									<option th:value="Mestrado">Mestrado</option>
 									<option th:value="Doutorado">Doutorado</option>
 								</select>
@@ -267,8 +277,8 @@
 						<div class="row">
 							<div class="form-group col-12">
 								<label for="tarefasRealizadas">Tarefas realizadas: </label>
-								<textarea class="form-control" id="tarefasRealizadas" rows="3"
-									style="resize: none" required></textarea>
+								<textarea name="tarefasRealizadas" class="form-control"
+									id="tarefasRealizadas" rows="3" style="resize: none" required></textarea>
 							</div>
 						</div>
 					</div>
@@ -311,10 +321,11 @@
 							<div class="form-group col-12">
 								<label for="nivel">Nível: </label> <select name="nivel"
 									form="cadForm" id="nivel" class="form-control" required>
-									<option th:value="EnsinoMédio">Ensino médio</option>
-									<option th:value="EnsinoTécnico">Ensino técnico</option>
-									<option th:value="Graduação">Graduação</option>
-									<option th:value="Pós-graduação">Pós-graduação</option>
+									<option th:value="0" disabled selected>Selecione</option>
+									<option th:value="EnsinoMedio">Ensino médio</option>
+									<option th:value="EnsinoTecnico">Ensino técnico</option>
+									<option th:value="Graduacao">Graduação</option>
+									<option th:value="PosGraduacao">Pós-graduação</option>
 									<option th:value="Mestrado">Mestrado</option>
 									<option th:value="Doutorado">Doutorado</option>
 								</select>
@@ -368,7 +379,8 @@
 								<div class="form-group">
 									<label for="dataAdmissao">Data de admissão</label> <input
 										type="text" class="form-control" name="dataAdmissao"
-										placeholder="Data de admissão" id="dataAdmissaoEdicao" required>
+										placeholder="Data de admissão" id="dataAdmissaoEdicao"
+										required>
 								</div>
 							</div>
 						</div>
@@ -377,15 +389,16 @@
 								<div class="form-group">
 									<label for="dataDemissao">Data de demissão</label> <input
 										type="text" class="form-control" name="dataDemissao"
-										placeholder="Data de demissão" id="dataDemissaoEdicao" required>
+										placeholder="Data de demissão" id="dataDemissaoEdicao"
+										required>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="form-group col-12">
 								<label for="tarefasRealizadas">Tarefas realizadas: </label>
-								<textarea name="tarefasRealizadas" class="form-control" id="tarefasRealizadas" rows="3"
-									style="resize: none" required></textarea>
+								<textarea name="tarefasRealizadas" class="form-control"
+									id="tarefasRealizadas" rows="3" style="resize: none" required></textarea>
 							</div>
 						</div>
 					</div>

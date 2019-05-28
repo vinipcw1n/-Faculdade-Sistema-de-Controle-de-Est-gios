@@ -22,7 +22,7 @@ import estagio.model.Role;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Usuario implements UserDetails{
+public class Usuario implements UserDetails{
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long id;
@@ -43,8 +43,7 @@ public abstract class Usuario implements UserDetails{
 	
 	private String cep;
 	
-	@Value("1")
-	private boolean aprovado;
+	private boolean aprovado = false;
 	
 	@ManyToOne
 	@JoinColumn(name = "role_id")

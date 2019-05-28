@@ -43,7 +43,7 @@
                                 <h1>Usuários aguardando aprovação</h1>
                             </div>
                         </div>
-                        <ul class="list-unstyled text-left" th:each="user : ${usuariosNaoAprovados}">
+                        <ul class="list-unstyled text-left" th:each="user : ${usuariosNaoAprovadosObj}">
                             <div class="row">
                                 <div class="col-12 col-md-8">
                                     <li class="media">
@@ -56,7 +56,9 @@
                                     </li>
                                 </div>
                                 <div class="col-12 col-md-4 text-right">
-                                    <form method="POST" action="#">
+                                    <form method="POST" action="aprovarUsuario">
+                                    	<input type="text" hidden name="id" th:value="${user.id}">
+                                    	<input type="text" hidden name="email" th:value="${user.email}">
                                         <button type="submit" name="acao" value="aprovar"
                                             class="btn btn-info btn-sm mt-1">Aprovar</button>
                                         <button type="submit" name="acao" value="negar"
@@ -80,15 +82,15 @@
                                 </div>
                             </div>
                         </div>
-                        <ul class="list-unstyled text-left" th:each="user : ${users}">
+                        <ul class="list-unstyled text-left" th:each="userAprovado : ${usuariosAprovadosObj}">
                             <div class="row">
                                 <div class="col-12 col-md-8">
                                     <li class="media">
                                         <img src="/icons/user.svg" width="60px" class="mr-3">
                                         <div class="media-body">
-                                            <h5 class="mt-0 mb-1" th:text="${user.nome}"></h5>
+                                            <h5 class="mt-0 mb-1" th:text="${userAprovado.nome}"></h5>
                                             <br>
-                                            <span th:text="${user.endereco}"></span>
+                                            <span th:text="${userAprovado.endereco}"></span>
                                         </div>
                                     </li>
                                 </div>

@@ -41,11 +41,11 @@ public class ImplementacaoUserDetailService implements UserDetailsService{
 		}
 		
 		if(aluno != null) {
-			return new User(aluno.getEmail(), aluno.getPassword(), true, true, true, true, aluno.getAuthorities());
+			return new User(aluno.getEmail(), aluno.getPassword(), aluno.isEnabled(), true, true, true, aluno.getAuthorities());
 		} else if(empresa != null) {
-			return new User(empresa.getEmail(), empresa.getPassword(), true, true, true, true, empresa.getAuthorities());
+			return new User(empresa.getEmail(), empresa.getPassword(), empresa.isEnabled(), true, true, true, empresa.getAuthorities());
 		} else {
-			return new User(admin.getEmail(), admin.getPassword(), true, true, true, true, admin.getAuthorities());
+			return new User(admin.getEmail(), admin.getPassword(), admin.isEnabled(), true, true, true, admin.getAuthorities());
 		}
 		
 	}
