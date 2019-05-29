@@ -32,4 +32,5 @@ public class SistemaEstagioApplication extends SpringBootServletInitializer impl
 	}
 }
 
-//RF 2, 3, 8.
+//RF Prontos 2, 3, 8.
+//RF Por fazer 4, 5, 12 
