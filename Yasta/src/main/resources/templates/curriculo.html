@@ -12,10 +12,6 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<!--  jQuery -->
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
 <link rel="stylesheet" href="/css/style.css">
 
 <title>Meu Currículo - Yasta</title>
@@ -61,10 +57,10 @@
 												<label th:text="${formacao.curso}"></label> - <label
 													th:text="${formacao.instituicao}"></label>
 											</h5>
+											<span>Período: </span><label th:text="${#temporals.format(formacao.dataInicio, 'dd/MM/yyyy')}"></label> - <label th:text="${#temporals.format(formacao.dataTermino, 'dd/MM/yyyy')}"></label><br>
 											<span>Nível: </span><label th:text="${formacao.nivel}"></label><br>
 											<span>Situação: </span><label th:text="${formacao.situacao}"></label>
 										</div></li>
-
 								</div>
 								<div class="col-12 col-md-4 text-right">
 									<form method="POST" action="#">
@@ -79,6 +75,8 @@
 											style="display: none;"></div>
 										<div class="situacao" th:text="${formacao.situacao}"
 											style="display: none;"></div>
+										<div class="dataInicio" th:text="${#temporals.format(formacao.dataInicio, 'dd/MM/yyyy')}" style="display: none"></div>
+										<div class="dataTermino" th:text="${#temporals.format(formacao.dataTermino, 'dd/MM/yyyy')}" style="display: none"></div>
 
 										<button type="button"
 											class="alterarFormacao btn btn-info btn-sm mt-1"
@@ -206,6 +204,24 @@
 									name="situacao" required>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="dataInicio">Data de início</label> <input
+										type="text" class="form-control" name="dataInicio"
+										placeholder="Data de início" id="dataInicio" required>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="dataTermino">Data de término</label> <input
+										type="text" class="form-control" name="dataTermino"
+										placeholder="Data de término" id="dataTermino">
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
@@ -254,7 +270,7 @@
 								<div class="form-group">
 									<label for="dataDemissao">Data de demissão</label> <input
 										type="text" class="form-control" name="dataDemissao"
-										placeholder="Data de demissão" id="dataDemissao" required>
+										placeholder="Data de demissão" id="dataDemissao">
 								</div>
 							</div>
 						</div>
@@ -322,6 +338,24 @@
 									name="situacao" required>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="dataInicio">Data de início</label> <input
+										type="text" class="form-control" name="dataInicio"
+										placeholder="Data de início" id="dataInicioEdicao" required>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-md-6">
+								<div class="form-group">
+									<label for="dataTermino">Data de término</label> <input
+										type="text" class="form-control" name="dataTermino"
+										placeholder="Data de término" id="dataTerminoEdicao">
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
@@ -373,8 +407,7 @@
 								<div class="form-group">
 									<label for="dataDemissao">Data de demissão</label> <input
 										type="text" class="form-control" name="dataDemissao"
-										placeholder="Data de demissão" id="dataDemissaoEdicao"
-										required>
+										placeholder="Data de demissão" id="dataDemissaoEdicao">
 								</div>
 							</div>
 						</div>
@@ -430,6 +463,12 @@
             
             $("#dataAdmissaoEdicao").datepicker(datepickerConfig);
             $("#dataDemissaoEdicao").datepicker(datepickerConfig);
+
+			$("#dataInicio").datepicker(datepickerConfig);
+			$("#dataTermino").datepicker(datepickerConfig);
+
+			$("#dataInicioEdicao").datepicker(datepickerConfig);
+			$("#dataTerminoEdicao").datepicker(datepickerConfig);
         })
         
         $(document).ready(function () {
@@ -455,13 +494,54 @@
 		        curso = $(this).siblings(".curso").html();
 		        nivel = $(this).siblings(".nivel").html();
 		        situacao = $(this).siblings(".situacao").html();
+				dataInicio = $(this).siblings(".dataInicio").html();
+				dataTermino = $(this).siblings(".dataTermino").html();
 
 		        $("#modalFormacaoEditar #id").val(id);
 		        $("#modalFormacaoEditar #instituicao").val(instituicao);
 		        $("#modalFormacaoEditar #curso").val(curso);
 		        $("#modalFormacaoEditar #nivel").val(nivel).change();
 		        $("#modalFormacaoEditar #situacao").val(situacao);
+				$("#modalFormacaoEditar #dataInicioEdicao").val(dataInicio);
+				$("#modalFormacaoEditar #dataTerminoEdicao").val(dataTermino);
 		    });
+
+			$("#cadForm").on("submit",function(e){
+				e.preventDefault();
+				if($("#modalFormacao #dataTermino").val() == ""){
+					$("#modalFormacao #dataTermino").val("01/01/1800");
+				}
+
+				this.submit();
+			});
+
+			$("#cadExp").on("submit",function(e){
+				e.preventDefault();
+				if($("#modalExperiencia #dataDemissao").val() == ""){
+					$("#modalExperiencia #dataDemissao").val("01/01/1800");
+				}
+
+				this.submit();
+			});
+
+			$("#cadFormEditar").on("submit",function(e){
+				e.preventDefault();
+				if($("#modalFormacaoEditar #dataTerminoEdicao").val() == ""){
+					$("#modalFormacaoEditar #dataTerminoEdicao").val("01/01/1800");
+				}
+
+				this.submit();
+			});
+
+			$("#cadExpEditar").on("submit",function(e){
+				e.preventDefault();
+
+				if($("#modalExperienciaEditar #dataDemissaoEdicao").val() == ""){
+					$("#modalExperienciaEditar #dataDemissaoEdicao").val("01/01/1800");
+				}
+
+				this.submit();
+			});
  		});
 
 		$("#menu").load("/menu");

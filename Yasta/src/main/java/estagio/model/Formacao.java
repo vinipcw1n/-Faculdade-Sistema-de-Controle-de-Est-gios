@@ -1,5 +1,7 @@
 package estagio.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +27,10 @@ public class Formacao {
 	private String nivel;
 	
 	private String situacao;
+	
+	private LocalDate dataInicio;
+	
+	private LocalDate dataTermino;
 	
 	@ManyToOne
 	@JoinColumn(name = "curriculo_id")
@@ -66,6 +72,24 @@ public class Formacao {
 	public void setCurriculo(Curriculo curriculo) {
 		this.curriculo = curriculo;
 	}
-	
-	
+	public LocalDate getDataInicio() {
+		return dataInicio;
+	}
+	public void setDataInicio(String dataInicio) {
+		String[] data = dataInicio.split("/");
+		LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+		this.dataInicio = dataFinal;
+	}
+	public LocalDate getDataTermino() {
+		return dataTermino;
+	}
+	public void setDataTermino(String dataTermino) {
+		if(!(dataTermino).equals("01/01/1800")) {
+			String[] data = dataTermino.split("/");
+			LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+			this.dataTermino = dataFinal;
+		} else {
+			this.dataTermino = null;
+		}
+	}
 }

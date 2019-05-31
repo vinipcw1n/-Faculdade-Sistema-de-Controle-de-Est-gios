@@ -72,9 +72,13 @@ public class Experiencia {
 	}
 
 	public void setDataDemissao(String dataDemissao) {
-		String[] data = dataDemissao.split("/");
-		LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
-		this.dataDemissao = dataFinal;
+		if(!(dataDemissao).equals("01/01/1800")) {
+			String[] data = dataDemissao.split("/");
+			LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+			this.dataDemissao = dataFinal;
+		} else {
+			this.dataDemissao = null;
+		}
 	}
 
 	public String getTarefasRealizadas() {
