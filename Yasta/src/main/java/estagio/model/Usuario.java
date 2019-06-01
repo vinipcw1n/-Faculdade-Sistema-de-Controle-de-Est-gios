@@ -182,4 +182,8 @@ public class Usuario implements UserDetails{
 		return aprovado;
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		return this.getId() == ((Usuario)obj).getId();
+	}
 }

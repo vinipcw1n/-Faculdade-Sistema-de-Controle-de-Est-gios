@@ -1,14 +1,16 @@
 package estagio.model;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.springframework.beans.factory.annotation.Value;
 
 @Entity
 public class Vaga {
@@ -25,6 +27,9 @@ public class Vaga {
 	private String requisitosObrigatorios;
 	
 	private String requisitosDesejaveis;
+	
+	@ManyToMany
+	private List<Usuario> candidatos;
 	
 	@ColumnDefault(value = "1")
 	private boolean aberta = true;
@@ -75,6 +80,14 @@ public class Vaga {
 
 	public void setAberta(boolean aberta) {
 		this.aberta = aberta;
+	}
+
+	public List<Usuario> getCandidatos() {
+		return candidatos;
+	}
+
+	public void setCandidatos(List<Usuario> candidatos) {
+		this.candidatos = candidatos;
 	}
 	
 }

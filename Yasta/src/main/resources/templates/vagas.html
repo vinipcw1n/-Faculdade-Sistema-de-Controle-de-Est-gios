@@ -16,7 +16,7 @@
 <body class="h-100 bg-dark">
     <div id="menu"></div>
 
-    <div th:object="${alunoObj}" class="container-fluid mt-fix h-100 bg-light">
+    <div th:object="${vagasObj}" class="container-fluid mt-fix h-100 bg-light">
         <div class="container text-center py-5 h-100">
             <div class="jumbotron py-4 h-100">
                 <div class="row">
@@ -25,19 +25,23 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-3">
+                    <div class="col-12 col-md-3" th:each="vaga : ${vagasObj}">
                         <div class="card text-center">
-                            <div class="card-header">
-                                Empresa
-                            </div>
+                            <div class="card-header" th:text="${vaga.empresa.nome}"></div>
                             <div class="card-body">
-                                <h5 class="card-title">Descrição do estágio</h5>
-                                <h6 class="card-title">Requisitos obrigatórios</h6>
-                                <p class="card-text">*Inserir requisitos obrigatórios*</p>
-                                <hr>
-                                <h6 class="card-title">Requisitos desejáveis</h6>
-                                <p class="card-text">*Inserir requisitos desejáveis*</p>
-                                <button class="btn btn-success bt-sm" type="submit">Candidatar-se</button>
+                                <form method="POST" action="/salvar/candidatura">
+                                    <h5 class="card-title" th:text="${vaga.descricao}">Descrição do estágio</h5>
+                                    <h6 class="card-title">Requisitos obrigatórios</h6>
+                                    <p class="card-text" th:text="${vaga.requisitosObrigatorios}"></p>
+                                    <hr>
+                                    <h6 class="card-title">Requisitos desejáveis</h6>
+                                    <p class="card-text" th:text="${vaga.requisitosDesejaveis}"></p>
+                                    <input type="hidden" name="id" th:value="${vaga.id}">
+                                    <div th:switch="${vaga.candidatos.contains(aluno)}">
+                                        <button th:case="true"  class="btn btn-danger bt-sm" type="submit">Desfazer candidatura</button>
+                                        <button th:case="false"  class="btn btn-success bt-sm" type="submit">Candidatar-se</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
