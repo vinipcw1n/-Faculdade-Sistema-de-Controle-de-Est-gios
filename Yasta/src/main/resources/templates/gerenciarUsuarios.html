@@ -14,7 +14,7 @@
 </head>
 
 <body class="h-100 bg-dark">
-	<div id="menu"></div>
+    <div id="menu"></div>
 
     <div class="container-fluid mt-fix h-100 bg-light">
         <div class="container text-center py-5 h-100">
@@ -24,6 +24,11 @@
                         <div class="row py-3">
                             <div class="col-12">
                                 <h1>Usuários aguardando aprovação</h1>
+                            </div>
+                        </div>
+                        <div th:switch="${usuariosNaoAprovadosObj.isEmpty()}">
+                            <div class="text-center alert alert-danger" role="alert" th:case="true">
+                                <h5>Não existem usuários aguardando aprovação!</h5>
                             </div>
                         </div>
                         <ul class="list-unstyled text-left" th:each="user : ${usuariosNaoAprovadosObj}">
@@ -40,8 +45,8 @@
                                 </div>
                                 <div class="col-12 col-md-4 text-right">
                                     <form method="POST" action="aprovarUsuario">
-                                    	<input type="text" hidden name="id" th:value="${user.id}">
-                                    	<input type="text" hidden name="email" th:value="${user.email}">
+                                        <input type="text" hidden name="id" th:value="${user.id}">
+                                        <input type="text" hidden name="email" th:value="${user.email}">
                                         <button type="submit" name="acao" value="aprovar"
                                             class="btn btn-info btn-sm mt-1">Aprovar</button>
                                         <button type="submit" name="acao" value="negar"
@@ -63,6 +68,11 @@
                                     <a class="dropdown-item" href="/cadastrar/empresa">Empresa</a>
                                     <a class="dropdown-item" href="/cadastrar/admin">Admin</a>
                                 </div>
+                            </div>
+                        </div>
+                        <div th:switch="${usuariosAprovadosObj.isEmpty()}">
+                            <div class="text-center alert alert-danger" role="alert" th:case="true">
+                                <h5>Não existem usuários aprovados!</h5>
                             </div>
                         </div>
                         <ul class="list-unstyled text-left" th:each="userAprovado : ${usuariosAprovadosObj}">
@@ -132,7 +142,7 @@
             $("#dataAdmissao").datepicker(datepickerConfig);
             $("#dataDemissao").datepicker(datepickerConfig);
         })
-        
+
         $("#menu").load("/menu");
     </script>
 </body>

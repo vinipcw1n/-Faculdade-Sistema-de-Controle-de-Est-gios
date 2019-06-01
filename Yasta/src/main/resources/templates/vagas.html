@@ -25,6 +25,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-12" th:switch="${vagasObj.isEmpty()}">
+                        <div class="text-center alert alert-danger" role="alert" th:case="true">
+                            <h5>Não existem vagas disponíveis!</h5>
+                        </div>
+                    </div>
                     <div class="col-12 col-md-3" th:each="vaga : ${vagasObj}">
                         <div class="card text-center">
                             <div class="card-header" th:text="${vaga.empresa.nome}"></div>
@@ -38,8 +43,10 @@
                                     <p class="card-text" th:text="${vaga.requisitosDesejaveis}"></p>
                                     <input type="hidden" name="id" th:value="${vaga.id}">
                                     <div th:switch="${vaga.candidatos.contains(aluno)}">
-                                        <button th:case="true"  class="btn btn-danger bt-sm" type="submit">Desfazer candidatura</button>
-                                        <button th:case="false"  class="btn btn-success bt-sm" type="submit">Candidatar-se</button>
+                                        <button th:case="true" class="btn btn-danger bt-sm" type="submit">Desfazer
+                                            candidatura</button>
+                                        <button th:case="false" class="btn btn-success bt-sm"
+                                            type="submit">Candidatar-se</button>
                                     </div>
                                 </form>
                             </div>

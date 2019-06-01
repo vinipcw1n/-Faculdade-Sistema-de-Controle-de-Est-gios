@@ -1,27 +1,22 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 
-<title>Meu Currículo - Yasta</title>
+	<title>Meu Currículo - Yasta</title>
 </head>
 
 <body class="h-100 bg-dark">
 	<div id="menu"></div>
 
-	<div th:object="${alunoObj}"
-		class="container-fluid mt-fix h-100 bg-light">
+	<div th:object="${alunoObj}" class="container-fluid mt-fix h-100 bg-light">
 		<div class="container text-center py-5 h-100">
 			<div class="jumbotron py-4 h-100">
 				<div class="row">
@@ -35,23 +30,27 @@
 						<br />
 						<h6 class="mb-3">Email:</h6>
 						<h6 th:text="*{email}"></h6>
-						<br /> <span>Endereço:</span> <br /> <label
-							th:text="*{endereco}"></label> <br /> <br /> <span>Telefone:</span>
+						<br /> <span>Endereço:</span> <br /> <label th:text="*{endereco}"></label> <br /> <br />
+						<span>Telefone:</span>
 						<br /> <label th:text="*{telefone}"></label>
 					</div>
 					<div class="col-12">
 						<div class="row py-3">
 							<div class="col-12">
 								<h2>Formação acadêmica</h2>
-								<button type="button" class="btn btn-success btn-sm"
-									data-toggle="modal" data-target="#modalFormacao">Adicionar</button>
+								<button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+									data-target="#modalFormacao">Adicionar</button>
 							</div>
 						</div>
 						<ul class="list-unstyled text-left">
+							<div th:switch="${formacoes.isEmpty()}">
+								<div class="text-center alert alert-danger" role="alert" th:case="true">
+									<h5>Não existem formações cadastradas ainda!</h5>
+								</div>
+							</div>
 							<div class="row" th:each="formacao : ${formacoes}">
 								<div class="col-12 col-md-8">
-									<li class="media"><img src="/icons/university.svg"
-										width="60px" class="mr-3">
+									<li class="media"><img src="/icons/university.svg" width="60px" class="mr-3">
 										<div class="media-body">
 											<h5 class="mt-0 mb-1">
 												<label th:text="${formacao.curso}"></label> - <label
@@ -100,6 +99,11 @@
 							</div>
 						</div>
 						<ul class="list-unstyled text-left">
+								<div th:switch="${experiencias.isEmpty()}">
+										<div class="text-center alert alert-danger" role="alert" th:case="true">
+											<h5>Não existem experiências cadastradas ainda!</h5>
+										</div>
+									</div>
 							<div class="row" th:each="experiencia : ${experiencias}">
 								<div class="col-12 col-md-8">
 									<li class="media"><img src="/icons/work.svg" width="60px"
@@ -444,109 +448,109 @@
 		crossorigin="anonymous"></script>
 
 	<script type="text/javascript">
-        $(() => {
-            var datepickerConfig = {
-                changeYear: true,
-                changeMonth: true,
-                dateFormat: 'dd/mm/yy',
-                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-                nextText: 'Próximo',
-                prevText: 'Anterior'
-            }
+		$(() => {
+			var datepickerConfig = {
+				changeYear: true,
+				changeMonth: true,
+				dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+				dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+				dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+				monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+				monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+				nextText: 'Próximo',
+				prevText: 'Anterior'
+			}
 
-            $("#dataAdmissao").datepicker(datepickerConfig);
-            $("#dataDemissao").datepicker(datepickerConfig);
-            
-            $("#dataAdmissaoEdicao").datepicker(datepickerConfig);
-            $("#dataDemissaoEdicao").datepicker(datepickerConfig);
+			$("#dataAdmissao").datepicker(datepickerConfig);
+			$("#dataDemissao").datepicker(datepickerConfig);
+
+			$("#dataAdmissaoEdicao").datepicker(datepickerConfig);
+			$("#dataDemissaoEdicao").datepicker(datepickerConfig);
 
 			$("#dataInicio").datepicker(datepickerConfig);
 			$("#dataTermino").datepicker(datepickerConfig);
 
 			$("#dataInicioEdicao").datepicker(datepickerConfig);
 			$("#dataTerminoEdicao").datepicker(datepickerConfig);
-        })
-        
-        $(document).ready(function () {
-    		$(".alterarExperiencia").click(function () {
-		        id = $(this).siblings(".id").html();
-		        empresa = $(this).siblings(".empresa").html();
-		        funcao = $(this).siblings(".funcao").html();
-		        dataAdmissao = $(this).siblings(".dataAdmissao").html();
-		        dataDemissao = $(this).siblings(".dataDemissao").html();
-		        tarefasRealizadas = $(this).siblings(".tarefasRealizadas").html();
-		
-		        $("#modalExperienciaEditar #id").val(id);
-		        $("#modalExperienciaEditar #empresa").val(empresa);
-		        $("#modalExperienciaEditar #funcao").val(funcao);
-		        $("#modalExperienciaEditar #dataAdmissaoEdicao").val(dataAdmissao);
-		        $("#modalExperienciaEditar #dataDemissaoEdicao").val(dataDemissao);
-		        $("#modalExperienciaEditar #tarefasRealizadas").val(tarefasRealizadas);
-    		});
-    		
-    		$(".alterarFormacao").click(function () {
-		        id = $(this).siblings(".id").html();
-		        instituicao = $(this).siblings(".instituicao").html();
-		        curso = $(this).siblings(".curso").html();
-		        nivel = $(this).siblings(".nivel").html();
-		        situacao = $(this).siblings(".situacao").html();
+		})
+
+		$(document).ready(function () {
+			$(".alterarExperiencia").click(function () {
+				id = $(this).siblings(".id").html();
+				empresa = $(this).siblings(".empresa").html();
+				funcao = $(this).siblings(".funcao").html();
+				dataAdmissao = $(this).siblings(".dataAdmissao").html();
+				dataDemissao = $(this).siblings(".dataDemissao").html();
+				tarefasRealizadas = $(this).siblings(".tarefasRealizadas").html();
+
+				$("#modalExperienciaEditar #id").val(id);
+				$("#modalExperienciaEditar #empresa").val(empresa);
+				$("#modalExperienciaEditar #funcao").val(funcao);
+				$("#modalExperienciaEditar #dataAdmissaoEdicao").val(dataAdmissao);
+				$("#modalExperienciaEditar #dataDemissaoEdicao").val(dataDemissao);
+				$("#modalExperienciaEditar #tarefasRealizadas").val(tarefasRealizadas);
+			});
+
+			$(".alterarFormacao").click(function () {
+				id = $(this).siblings(".id").html();
+				instituicao = $(this).siblings(".instituicao").html();
+				curso = $(this).siblings(".curso").html();
+				nivel = $(this).siblings(".nivel").html();
+				situacao = $(this).siblings(".situacao").html();
 				dataInicio = $(this).siblings(".dataInicio").html();
 				dataTermino = $(this).siblings(".dataTermino").html();
 
-		        $("#modalFormacaoEditar #id").val(id);
-		        $("#modalFormacaoEditar #instituicao").val(instituicao);
-		        $("#modalFormacaoEditar #curso").val(curso);
-		        $("#modalFormacaoEditar #nivel").val(nivel).change();
-		        $("#modalFormacaoEditar #situacao").val(situacao);
+				$("#modalFormacaoEditar #id").val(id);
+				$("#modalFormacaoEditar #instituicao").val(instituicao);
+				$("#modalFormacaoEditar #curso").val(curso);
+				$("#modalFormacaoEditar #nivel").val(nivel).change();
+				$("#modalFormacaoEditar #situacao").val(situacao);
 				$("#modalFormacaoEditar #dataInicioEdicao").val(dataInicio);
 				$("#modalFormacaoEditar #dataTerminoEdicao").val(dataTermino);
-		    });
+			});
 
-			$("#cadForm").on("submit",function(e){
+			$("#cadForm").on("submit", function (e) {
 				e.preventDefault();
-				if($("#modalFormacao #dataTermino").val() == ""){
+				if ($("#modalFormacao #dataTermino").val() == "") {
 					$("#modalFormacao #dataTermino").val("01/01/1800");
 				}
 
 				this.submit();
 			});
 
-			$("#cadExp").on("submit",function(e){
+			$("#cadExp").on("submit", function (e) {
 				e.preventDefault();
-				if($("#modalExperiencia #dataDemissao").val() == ""){
+				if ($("#modalExperiencia #dataDemissao").val() == "") {
 					$("#modalExperiencia #dataDemissao").val("01/01/1800");
 				}
 
 				this.submit();
 			});
 
-			$("#cadFormEditar").on("submit",function(e){
+			$("#cadFormEditar").on("submit", function (e) {
 				e.preventDefault();
-				if($("#modalFormacaoEditar #dataTerminoEdicao").val() == ""){
+				if ($("#modalFormacaoEditar #dataTerminoEdicao").val() == "") {
 					$("#modalFormacaoEditar #dataTerminoEdicao").val("01/01/1800");
 				}
 
 				this.submit();
 			});
 
-			$("#cadExpEditar").on("submit",function(e){
+			$("#cadExpEditar").on("submit", function (e) {
 				e.preventDefault();
 
-				if($("#modalExperienciaEditar #dataDemissaoEdicao").val() == ""){
+				if ($("#modalExperienciaEditar #dataDemissaoEdicao").val() == "") {
 					$("#modalExperienciaEditar #dataDemissaoEdicao").val("01/01/1800");
 				}
 
 				this.submit();
 			});
- 		});
+		});
 
 		$("#menu").load("/menu");
 
-    </script>
+	</script>
 </body>
 
 </html>
