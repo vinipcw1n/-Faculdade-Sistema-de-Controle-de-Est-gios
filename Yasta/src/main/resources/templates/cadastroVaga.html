@@ -19,7 +19,7 @@
 
 <body class="h-100 bg-dark">
 	<div id="menu"></div>
-	
+
 	<div class="container-fluid mt-fix h-100 bg-light">
 		<div class="container text-center py-5 h-100">
 			<img class="img-fluid notDraggable" src="/img/logo2.png"
@@ -30,13 +30,16 @@
 						<h1>Cadastro de Vaga</h1>
 					</div>
 					<div class="col-12">
-						<form class="text-left" method="post" action="salvar/vaga" th:object="${vagaObj}">
+						<form class="text-left" method="post" action="salvar/vaga"
+							th:object="${vagaObj}">
 							<div class="row">
 								<div class="col-12">
 									<div class="form-group">
+									<input name="id" th:field="*{id}" hidden>
 										<label for="descricao">Descrição da vaga</label> <input
-											type="text" class="form-control" name="descricao" th:field="*{descricao}"
-											placeholder="Descrição da vaga" required>
+											type="text" class="form-control" name="descricao"
+											th:field="*{descricao}" placeholder="Descrição da vaga"
+											required>
 									</div>
 								</div>
 							</div>
@@ -47,7 +50,8 @@
 											<label for="requisitosObrigatorios">Requisitos
 												Obrigatórios</label>
 											<textarea class="form-control" id="requisitosObrigatorios"
-												rows="3" style="resize: none" name="requisitosObrigatorios" th:field="*{requisitosObrigatorios}" required></textarea>
+												rows="3" style="resize: none" name="requisitosObrigatorios"
+												th:field="*{requisitosObrigatorios}" required></textarea>
 										</div>
 									</div>
 								</div>
@@ -59,16 +63,25 @@
 											<label for="requisitosDesejaveis">Requisitos
 												Desejáveis</label>
 											<textarea class="form-control" id="requisitosDesejaveis"
-												rows="3" style="resize: none" name="requisitosDesejaveis" th:field="*{requisitosDesejaveis}" required></textarea>
+												rows="3" style="resize: none" name="requisitosDesejaveis"
+												th:field="*{requisitosDesejaveis}" required></textarea>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12 text-center">
-									<a href="/administrarVagas"><button type="button"
-											class="btn btn-info mt-4">Voltar</button></a>
-									<button type="submit" class="btn btn-info mt-4">Cadastrar</button>
+									<div th:if="!${edit}">
+										<a href="/minhasVagas"><button type="button"
+												class="btn btn-info mt-4">Voltar</button></a>
+										<button type="submit"
+											class="btn btn-info mt-4">Cadastrar</button>
+									</div>
+									<div th:if="${edit}">
+										<a href="/minhasVagas"><button type="button"
+												class="btn btn-info mt-4">Voltar</button></a>
+										<button type="submit" class="btn btn-info mt-4">Salvar</button>
+									</div>
 								</div>
 							</div>
 						</form>

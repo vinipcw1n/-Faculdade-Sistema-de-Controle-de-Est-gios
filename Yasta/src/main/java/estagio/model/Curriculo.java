@@ -1,5 +1,6 @@
 package estagio.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,10 +20,10 @@ public class Curriculo {
 	private Long id;
 	
 	@OneToMany(targetEntity = Formacao.class, mappedBy = "curriculo", cascade = CascadeType.ALL)
-	private List<Formacao> formacaoAcademica;
+	private List<Formacao> formacaoAcademica = new ArrayList<>();
 	
 	@OneToMany(targetEntity = Experiencia.class, mappedBy = "curriculo", cascade = CascadeType.ALL)
-	private List<Experiencia> experienciaProfissional;
+	private List<Experiencia> experienciaProfissional = new ArrayList<>();
 	
 	public Long getId() {
 		return id;

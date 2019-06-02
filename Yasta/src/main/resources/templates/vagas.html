@@ -34,7 +34,7 @@
                         <div class="card text-center">
                             <div class="card-header" th:text="${vaga.empresa.nome}"></div>
                             <div class="card-body">
-                                <form method="POST" action="/salvar/candidatura">
+                                <form method="POST" action="salvar/candidatura">
                                     <h5 class="card-title" th:text="${vaga.descricao}">Descrição do estágio</h5>
                                     <h6 class="card-title">Requisitos obrigatórios</h6>
                                     <p class="card-text" th:text="${vaga.requisitosObrigatorios}"></p>

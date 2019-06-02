@@ -1,84 +1,97 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 
-    <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
-    <title>Gerenciando Usuários - Yasta</title>
+<title>Gerenciando Usuários - Yasta</title>
 </head>
 
 <body class="h-100 bg-dark">
-    <div id="menu"></div>
+	<div id="menu"></div>
 
-    <div class="container-fluid mt-fix h-100 bg-light">
-        <div class="container text-center py-5 h-100">
-            <div class="jumbotron py-4 h-100">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="row py-3">
-                            <div class="col-12">
-                                <h1>Candidatos da vaga</h1>
-                            </div>
-                        </div>
-                        <div th:switch="${candidatosObj.isEmpty()}">
-                            <div class="text-center alert alert-danger" role="alert" th:case="true">
-                                <h5>Não existem candidatos para esta vaga!</h5>
-                            </div>
-                        </div>
-                        <ul class="list-unstyled text-left" th:each="candidato : ${candidatosObj}">
-                            <div class="row">
-                                <div class="col-12 col-md-8">
-                                    <li class="media">
-                                        <img src="/icons/user.svg" width="60px" class="mr-3">
-                                        <div class="media-body">
-                                            <h5 class="mt-0 mb-1" th:text="${candidato.nome}"></h5>
-                                            <br>
-                                            <span th:text="${candidato.endereco}"></span>
-                                        </div>
-                                    </li>
-                                </div>
-                                <div class="col-12 col-md-4 text-right">
-                                    <form method="POST" action="#">
-                                        <button type="submit" name="acao" value="visualizarCurriculo"
-                                            class="btn btn-info btn-sm mt-1">Visualizar currículo</button>
-                                        <button type="submit" name="acao" value="removerCandidatura"
-                                            class="btn btn-danger btn-sm mt-1">Remover candidatura</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="container-fluid bg-dark text-white">
-        <div class="container pt-4">
-            <div class="container-fluid">
-                <p>
-                    Yasta - Sistema de estágios<br>Desenvolvido por: Fabricio
-                    Rocha, Gabriel Zutião, Jady Domingues, Leonardo Cerminaro e
-                    Vinícius Perna<br>2019
-                </p>
-            </div>
-        </div>
-    </footer>
+	<div class="container-fluid mt-fix h-100 bg-light">
+		<div class="container text-center py-5 h-100">
+			<div class="jumbotron py-4 h-100">
+				<div class="row">
+					<div class="col-12">
+						<div class="row py-3">
+							<div class="col-12">
+								<h1>Candidatos da vaga</h1>
+							</div>
+						</div>
+						<div th:switch="${candidatosObj.isEmpty()}">
+							<div class="text-center alert alert-danger" role="alert"
+								th:case="true">
+								<h5>Não existem candidatos para esta vaga!</h5>
+							</div>
+						</div>
+						<ul class="list-unstyled text-left"
+							th:each="candidato : ${candidatosObj}">
+							<div class="row">
+								<div class="col-12 col-md-8">
+									<li class="media"><img src="/icons/user.svg" width="60px"
+										class="mr-3">
+										<div class="media-body">
+											<h5 class="mt-0 mb-1" th:text="${candidato.nome}"></h5>
+											<br> <span th:text="${candidato.endereco}"></span>
+										</div></li>
+								</div>
+								<div class="col-12 col-md-4 text-right">
+									<a th:href="@{/curriculo/{id}(id=${candidato.id})}"><button
+											type="button" name="acao" value="visualizarCurriculo"
+											class="btn btn-info btn-sm mt-1">Visualizar
+											currículo</button></a>
+									<button type="submit" name="acao" value="removerCandidatura"
+										class="btn btn-danger btn-sm mt-1">Remover
+										candidatura</button>
+								</div>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="container-fluid bg-dark text-white">
+		<div class="container pt-4">
+			<div class="container-fluid">
+				<p>
+					Yasta - Sistema de estágios<br>Desenvolvido por: Fabricio
+					Rocha, Gabriel Zutião, Jady Domingues, Leonardo Cerminaro e
+					Vinícius Perna<br>2019
+				</p>
+			</div>
+		</div>
+	</footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <link href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
-    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<link
+		href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
+		rel="Stylesheet" type="text/css" />
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$("#menu").load("/menu");
+	</script>
 </body>
 
 </html>

@@ -28,8 +28,8 @@ public class Vaga {
 	
 	private String requisitosDesejaveis;
 	
-	@ManyToMany
-	private List<Usuario> candidatos;
+	@OneToMany
+	private List<Aluno> candidatos;
 	
 	@ColumnDefault(value = "1")
 	private boolean aberta = true;
@@ -82,11 +82,11 @@ public class Vaga {
 		this.aberta = aberta;
 	}
 
-	public List<Usuario> getCandidatos() {
+	public List<Aluno> getCandidatos() {
 		return candidatos;
 	}
 
-	public void setCandidatos(List<Usuario> candidatos) {
+	public void setCandidatos(List<Aluno> candidatos) {
 		this.candidatos = candidatos;
 	}
 	

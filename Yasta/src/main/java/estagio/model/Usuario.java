@@ -12,19 +12,20 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
+import org.springframework.stereotype.Component;
 
 import estagio.model.Role;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Usuario implements UserDetails{
+@MappedSuperclass
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Usuario implements UserDetails{
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String nome;
