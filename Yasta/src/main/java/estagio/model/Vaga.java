@@ -28,7 +28,7 @@ public class Vaga {
 	
 	private String requisitosDesejaveis;
 	
-	@OneToMany
+	@ManyToMany
 	private List<Aluno> candidatos;
 	
 	@ColumnDefault(value = "1")
