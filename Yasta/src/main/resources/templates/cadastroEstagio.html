@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Cadastro de Vaga - Yasta</title>
+</head>
+
+<body class="h-100 bg-dark">
+    <div id="menu"></div>
+
+    <div class="container-fluid mt-fix h-100 bg-light">
+        <div class="container text-center py-5 h-100">
+            <img class="img-fluid notDraggable" src="/img/logo2.png" width="200rem" alt="">
+            <div class="jumbotron mt-5 py-4 h-100">
+                <div class="row">
+                    <div class="col-12 mb-2">
+                        <h1>Cadastro de Estágio</h1>
+                    </div>
+                    <div class="col-12">
+                        <form class="text-left" method="post" action="salvar/estagio" th:object="${estagioObj}">
+                            <div class="row">
+                                <div class="col-12 col-md-9">
+                                    <div class="form-group">
+                                        <input name="id" th:field="*{id}" hidden>
+                                        <label for="descricao">Descrição do estágio</label> <input type="text"
+                                            class="form-control" name="descricao" th:field="*{descricao}"
+                                            placeholder="Descrição da vaga" required>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="form-group">
+                                        <label for="descricao">Duração em horas</label> <input type="text"
+                                            class="form-control" name="duracao" th:field="*{duracao}"
+                                            placeholder="Duração em horas" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="dataInicio">Data de início</label> <input type="text"
+                                                class="form-control" name="dataInicio" placeholder="Data de início"
+                                                id="dataInicio" th:field="*{dataInicio}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="dataInicio">Data de término</label> <input type="text"
+                                                    class="form-control" name="dataTermino" placeholder="Data de término"
+                                                    id="dataTermino" th:field="*{dataTermino}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="emailSupervisorEmpresa">Email do supervisor da empresa</label> <input type="email"
+                                                class="form-control" name="emailSupervisorEmpresa" placeholder="Email do supervisor da empresa"
+                                                id="emailSupervisorEmpresa" th:field="*{emailSupervisorEmpresa}" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="emailSupervisorInstituicao">Email do supervisor da instituição</label> <input type="email"
+                                                    class="form-control" name="emailSupervisorInstituicao" placeholder="Email do supervisor da instituição"
+                                                    id="emailSupervisorInstituicao" th:field="*{emailSupervisorInstituicao}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <div th:if="!${edit}">
+                                        <a href="/gerenciarEstagios"><button type="button"
+                                                class="btn btn-info mt-4">Voltar</button></a>
+                                        <button type="submit" class="btn btn-info mt-4">Cadastrar</button>
+                                    </div>
+                                    <div th:if="${edit}">
+                                        <a href="/gerenciarEstagios"><button type="button"
+                                                class="btn btn-info mt-4">Voltar</button></a>
+                                        <button type="submit" class="btn btn-info mt-4">Salvar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="container-fluid bg-dark text-white">
+        <div class="container pt-4">
+            <div class="container-fluid">
+                <p>
+                    Yasta - Sistema de estágios<br>Desenvolvido por: Fabricio
+                    Rocha, Gabriel Zutião, Jady Domingues, Leonardo Cerminaro e
+                    Vinícius Perna<br>2019
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(() => {
+            $("#dataInicio").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                dateFormat: 'dd/mm/yy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+
+            $("#dataTermino").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                dateFormat: 'dd/mm/yy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+            });
+        })
+
+        $("#menu").load("/menu");
+
+    </script>
+</body>
+
+</html>
