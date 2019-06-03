@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="utf-8">
@@ -25,7 +25,7 @@
 						<h1>Cadastro de Empresa</h1>
 					</div>
 					<div class="col-12">
-						<form class="text-left" method="post" action="salvar/empresa">
+						<form class="text-left" method="post" action="salvar/empresa" th:object="${userObj}">
 							<div class="row">
 								<div class="col-12 col-md-9">
 									<label for="nome">Nome</label>
@@ -36,13 +36,14 @@
 										</div>
 										<input type="text" class="form-control" placeholder="Nome da empresa"
 											aria-label="Nome completo" name="nome" aria-describedby="basic-addon1"
-											required>
+											required th:value="*{nome}">
+										<input type="hidden" name="id" th:value="*{id}">
 									</div>
 								</div>
 								<div class="col-12 col-md-3">
 									<div class="form-group">
 										<label for="cnpj">CNPJ</label> <input type="text" class="form-control"
-											name="cnpj" placeholder="CNPJ da empresa" required>
+											name="cnpj" placeholder="CNPJ da empresa" required th:field="*{cnpj}">
 									</div>
 								</div>
 							</div>
@@ -51,14 +52,14 @@
 									<div class="form-group">
 										<label for="email">Endereço de email</label> <input type="email"
 											class="form-control" name="email" placeholder="Endereço de email da empresa"
-											required>
+											required th:field="*{email}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="responsavel">Nome do responsável</label> <input type="text"
 											class="form-control" name="responsavel" placeholder="Nome do responsável"
-											required>
+											required th:field="*{responsavel}">
 									</div>
 								</div>
 							</div>
@@ -66,13 +67,13 @@
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="endereco">Endereço</label> <input type="text" class="form-control"
-											name="endereco" placeholder="Endereço da empresa" required>
+											name="endereco" placeholder="Endereço da empresa" required th:field="*{endereco}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="estado">Estado</label> <input type="text" class="form-control"
-											name="estado" placeholder="Estado" required>
+											name="estado" placeholder="Estado" required th:field="*{estado}">
 									</div>
 								</div>
 							</div>
@@ -80,13 +81,13 @@
 								<div class="col-8">
 									<div class="form-group">
 										<label for="cidade">Cidade</label> <input type="text" class="form-control"
-											name="cidade" placeholder="Cidade" required>
+											name="cidade" placeholder="Cidade" required th:field="*{cidade}">
 									</div>
 								</div>
 								<div class="col-4">
 									<div class="form-group">
 										<label for="cep">CEP</label> <input type="text" class="form-control" name="cep"
-											placeholder="CEP" required>
+											placeholder="CEP" required th:field="*{cep}">
 									</div>
 								</div>
 							</div>
@@ -94,22 +95,29 @@
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="telefone">Telefone</label> <input type="text" class="form-control"
-											name="telefone" placeholder="Telefone da empresa" required>
+											name="telefone" placeholder="Telefone da empresa" required th:field="*{telefone}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="senha">Senha</label> <input type="password" class="form-control"
-											name="senha" placeholder="Senha" required>
+											name="senha" placeholder="Senha" required th:value="*{senha}">
 										<!-- Cargo -->
 										<input type="text" name="role" value="1" hidden="true">
+										
+										<input type="hidden" name="aprovado" th:value="true">
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-12 text-center">
+								<div th:if="!${edit}" class="col-12 text-center">
 									<a href="/"><button type="button" class="btn btn-info mt-4">Voltar</button></a>
 									<button type="submit" class="btn btn-info mt-4">Cadastrar</button>
+								</div>
+
+								<div th:if="${edit}" class="col-12 text-center">
+									<a href="/gerenciarUsuarios"><button type="button" class="btn btn-info mt-4">Voltar</button></a>
+									<button type="submit" class="btn btn-info mt-4">Salvar</button>
 								</div>
 							</div>
 						</form>

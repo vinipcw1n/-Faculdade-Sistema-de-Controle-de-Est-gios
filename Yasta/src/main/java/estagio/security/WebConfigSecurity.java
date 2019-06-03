@@ -30,6 +30,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
 		.antMatchers(HttpMethod.POST, "/cadastrar/**").permitAll()
 		.antMatchers(HttpMethod.GET, "/salvar/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/salvar/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/menu").permitAll()
 		//.antMatchers(HttpMethod.GET, "/menu").hasAnyRole("ADMIN", "GERENTE", "ALMOXARIFE", "VENDEDOR")
 		
 		.anyRequest().authenticated()

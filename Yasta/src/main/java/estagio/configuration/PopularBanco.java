@@ -64,6 +64,11 @@ public class PopularBanco {
 		
 		if(admins.isEmpty()) {
 			Admin admin = new Admin();
+			admin.setNome("Admin");
+			admin.setEstado("SP");
+			admin.setEndereco("Rua teste");
+			admin.setCidade("Teste");
+			admin.setCep("123");
 			admin.setEmail("admin@admin");
 			admin.setSenha("admin");
 			admin.setRole(Long.parseLong("3"));
@@ -78,6 +83,11 @@ public class PopularBanco {
 		
 		if(alunos.isEmpty()) {
 			Aluno aluno = new Aluno();
+			aluno.setCep("123");
+			aluno.setCidade("Teste");
+			aluno.setCurso("ADS");
+			aluno.setDataIngresso("05/05/2019");
+			aluno.setEstado("SP");
 			aluno.setEmail("aluno@aluno");
 			aluno.setSenha("aluno");
 			aluno.setRole(Long.parseLong("0"));

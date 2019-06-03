@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import estagio.configuration.PopularBanco;
 import estagio.model.Admin;
@@ -41,18 +42,24 @@ public class LoginController {
 	}
 	
 	@GetMapping("/cadastrar/aluno")
-	public String cadastroAluno() {
-		return "cadastroAluno";
+	public ModelAndView cadastroAluno() {
+		ModelAndView modelAndView = new ModelAndView("cadastroAluno");
+		modelAndView.addObject("userObj", new Aluno());
+		return modelAndView;
 	}
 	
 	@GetMapping("/cadastrar/empresa")
-	public String cadastroEmpresa() {
-		return "cadastroEmpresa";
+	public ModelAndView cadastroEmpresa() {
+		ModelAndView modelAndView = new ModelAndView("cadastroEmpresa");
+		modelAndView.addObject("userObj", new Empresa());
+		return modelAndView;
 	}
 	
 	@GetMapping("/cadastrar/admin")
-	public String cadastroAdmin() {
-		return "cadastroAdmin";
+	public ModelAndView cadastroAdmin() {
+		ModelAndView modelAndView = new ModelAndView("cadastroAdmin");
+		modelAndView.addObject("userObj", new Admin());
+		return modelAndView;
 	}
 	
 	@PostMapping("**/salvar/aluno")
