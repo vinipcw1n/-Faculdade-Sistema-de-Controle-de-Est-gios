@@ -11,18 +11,17 @@
 	</button>
 	<div id="my-nav" class="collapse navbar-collapse">
 		<ul class="navbar-nav mr-auto">
-			<li class="nav-item"><a class="nav-link" href="/">Início</a></li>
-			<li class="nav-item"><a class="nav-link" href="/curriculo">Meu
+			<li class="nav-item"><a class="nav-link" href="/" sec:authorize="isAuthenticated()">Início</a></li>
+			<li class="nav-item"><a class="nav-link" href="/curriculo" sec:authorize="hasAnyRole('ROLE_ALUNO')">Meu
 					Curriculo</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="/gerenciarUsuarios">Gerenciar Usuarios</a></li>
-			<li class="nav-item"><a class="nav-link" href="/cadastrar/vaga">Cadastrar
-					Vaga</a></li>
+				href="/gerenciarUsuarios" sec:authorize="hasAnyRole('ROLE_ADMIN')">Gerenciar Usuarios</a></li>
 			<li class="nav-item"><a class="nav-link" href="/vagas">Vagas</a></li>
-			<li class="nav-item"><a class="nav-link" href="/minhasVagas">Minhas Vagas</a></li>
+			<li class="nav-item"><a class="nav-link" href="/minhasVagas" sec:authorize="hasAnyRole('ROLE_EMPRESA')">Minhas Vagas</a></li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
-			<li class="nav-item"><a class="nav-link" href="/logout">Sair</a></li>
+			<li class="nav-item"><a class="nav-link" href="/logout" sec:authorize="isAuthenticated()">Sair</a></li>
+			<li class="nav-item"><a class="nav-link" href="/login" sec:authorize="isAnonymous()">Login</a></li>
 			<!-- 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" role="button"
 				data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastrar</a>
