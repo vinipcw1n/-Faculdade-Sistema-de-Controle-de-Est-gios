@@ -28,6 +28,12 @@ public class Estagio {
 	
 	private int duracao;
 	
+	@ManyToOne
+	private SupervisorEstagio supervisorEmpresa;
+
+	@ManyToOne
+	private SupervisorEstagio supervisorInstituicao;
+	
 	@OneToOne
 	private RelatorioEstagio relatorio;
 
@@ -86,5 +92,20 @@ public class Estagio {
 	public void setRelatorio(RelatorioEstagio relatorio) {
 		this.relatorio = relatorio;
 	}
+
+	public void setSupervisorEmpresa(SupervisorEstagio supervisorEmpresa) {
+		this.supervisorEmpresa = supervisorEmpresa;
+	}
 	
+	public SupervisorEstagio getSupervisorEmpresa() {
+		return supervisorEmpresa;
+	}
+
+	public void setSupervisorInstituicao(SupervisorEstagio supervisorInstituicao) {
+		this.supervisorInstituicao = supervisorInstituicao;
+	}
+	
+	public SupervisorEstagio getSupervisorInstituicao() {
+		return supervisorInstituicao;
+	}
 }

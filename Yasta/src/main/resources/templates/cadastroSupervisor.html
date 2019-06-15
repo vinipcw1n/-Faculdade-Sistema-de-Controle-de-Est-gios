@@ -29,7 +29,7 @@
 						<h1>Cadastro de Supervisor</h1>
 					</div>
 					<div class="col-12">
-						<form class="text-left" method="post" th:object="supervisorObj" action="salvar/supervisor">
+						<form class="text-left" method="post" th:object="${userObj}" action="salvar/supervisor">
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<label for="nome">Nome</label>

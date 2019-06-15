@@ -14,6 +14,7 @@ import estagio.model.Admin;
 import estagio.model.Aluno;
 import estagio.model.Empresa;
 import estagio.model.Estagio;
+import estagio.model.SupervisorEstagio;
 import estagio.model.Usuario;
 import estagio.repository.AdminRepository;
 import estagio.repository.AlunoRepository;
@@ -111,6 +112,13 @@ public class AdminController {
 	public ModelAndView cadastrarEstagio() {
 		ModelAndView modelAndView = new ModelAndView("cadastroEstagio");
 		modelAndView.addObject("estagioObj", new Estagio());
+		return modelAndView;
+	}
+	
+	@GetMapping("/cadastrar/supervisor")
+	public ModelAndView cadastrarSupervisor() {
+		ModelAndView modelAndView = new ModelAndView("cadastroSupervisor");
+		modelAndView.addObject("userObj", new SupervisorEstagio());
 		return modelAndView;
 	}
 }

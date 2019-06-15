@@ -52,13 +52,13 @@
                                                 id="dataInicio" th:field="*{dataInicio}" required>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
                                         <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="dataInicio">Data de término</label> <input type="text"
-                                                    class="form-control" name="dataTermino" placeholder="Data de término"
-                                                    id="dataTermino" th:field="*{dataTermino}" required>
-                                            </div>
+                                            <label for="dataTermino">Data de término</label> <input type="text"
+                                                class="form-control" name="dataTermino" placeholder="Data de término"
+                                                id="dataTermino" th:field="*{dataTermino}" required>
                                         </div>
                                     </div>
                                 </div>
@@ -69,16 +69,16 @@
                                         <div class="form-group">
                                             <label for="emailSupervisorEmpresa">Email do supervisor da empresa</label> <input type="email"
                                                 class="form-control" name="emailSupervisorEmpresa" placeholder="Email do supervisor da empresa"
-                                                id="emailSupervisorEmpresa" th:field="*{emailSupervisorEmpresa}" required>
+                                                id="emailSupervisorEmpresa" th:field="*{supervisorEmpresa.email}" required>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-md-6">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
                                         <div class="form-group">
-                                            <div class="form-group">
-                                                <label for="emailSupervisorInstituicao">Email do supervisor da instituição</label> <input type="email"
-                                                    class="form-control" name="emailSupervisorInstituicao" placeholder="Email do supervisor da instituição"
-                                                    id="emailSupervisorInstituicao" th:field="*{emailSupervisorInstituicao}" required>
-                                            </div>
+                                            <label for="emailSupervisorInstituicao">Email do supervisor da instituição</label> <input type="email"
+                                                class="form-control" name="emailSupervisorInstituicao" placeholder="Email do supervisor da instituição"
+                                                id="emailSupervisorInstituicao" th:field="*{supervisorInstituicao.email}" required>
                                         </div>
                                     </div>
                                 </div>
