@@ -1,20 +1,16 @@
 <!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 
-<title>Cadastro de Relatório - Yasta</title>
+	<title>Cadastro de Relatório - Yasta</title>
 </head>
 
 <body class="h-100 bg-dark">
@@ -22,25 +18,23 @@
 
 	<div class="container-fluid mt-fix h-100 bg-light">
 		<div class="container text-center py-5 h-100">
-			<img class="img-fluid notDraggable" src="/img/logo2.png"
-				width="200rem" alt="">
+			<img class="img-fluid notDraggable" src="/img/logo2.png" width="200rem" alt="">
 			<div class="jumbotron mt-5 py-4 h-100">
 				<div class="row">
 					<div class="col-12 mb-2">
 						<h1>Cadastro de Relatório</h1>
 					</div>
 					<div class="col-12">
-						<form class="text-left" method="post" action="salvar/vaga"
-							th:object="${vagaObj}">
+						<form class="text-left" method="post" action="salvar/vaga" th:object="${vagaObj}">
 							<div class="row">
 								<div class="col-12">
 									<div class="form-group">
-                                        <div class="form-group">
-                                            <label for="data">Data de entrega</label> <input type="text"
-                                                class="form-control" name="data" placeholder="Data de entrega"
-                                                id="data" th:field="*{data}" required>
-                                        </div>
-                                    </div>
+										<div class="form-group">
+											<label for="data">Data de entrega</label> <input type="text"
+												class="form-control" name="data" placeholder="Data de entrega" id="data"
+												th:field="*{data}" required>
+										</div>
+									</div>
 								</div>
 							</div>
 							<div class="row">
@@ -48,9 +42,8 @@
 									<div class="form-group">
 										<div class="form-group">
 											<label for="texto">Texto</label>
-											<textarea class="form-control" id="texto"
-												rows="3" style="resize: none" name="texto"
-												th:field="*{texto}" required></textarea>
+											<textarea class="form-control" id="texto" rows="3" style="resize: none"
+												name="texto" th:field="*{texto}" required></textarea>
 										</div>
 									</div>
 								</div>
@@ -60,8 +53,7 @@
 									<div th:if="!${edit}">
 										<a href="/meusEstagios"><button type="button"
 												class="btn btn-info mt-4">Voltar</button></a>
-										<button type="submit"
-											class="btn btn-info mt-4">Cadastrar</button>
+										<button type="submit" class="btn btn-info mt-4">Cadastrar</button>
 									</div>
 									<div th:if="${edit}">
 										<a href="/meusEstagios"><button type="button"
@@ -89,38 +81,43 @@
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-	<link
-		href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
-		rel="Stylesheet" type="text/css" />
+	<link href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
 	<script type="text/javascript">
-        $(() => {
-            $("#data").datepicker({
-                changeYear: true,
-                changeMonth: true,
-                dateFormat: 'dd/mm/yy',
-                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-                nextText: 'Próximo',
-                prevText: 'Anterior'
-            });
-        })
-        
+		$(() => {
+			$("#data").datepicker({
+				changeYear: true,
+				changeMonth: true,
+				dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+				dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+				dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+				monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+				monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+				nextText: 'Próximo',
+				prevText: 'Anterior'
+			});
+		})
+
+		$(document).ready(() => {
+			if (new Date($("#data").val())) {
+				var data = new Date($("#data").val());
+				data.setDate(data.getDate() + 1);
+
+				$("#data").val(data.toLocaleDateString());
+			}
+		});
+
 		$("#menu").load("/menu");
 
-    </script>
+	</script>
 </body>
 
 </html>

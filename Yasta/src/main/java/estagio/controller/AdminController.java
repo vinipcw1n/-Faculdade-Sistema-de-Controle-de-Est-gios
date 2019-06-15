@@ -149,4 +149,18 @@ public class AdminController {
 		estagioRepository.save(estagio);
 		return("redirect:/gerenciarEstagios");
 	}
+	
+	@PostMapping("estagio/editar")
+	public ModelAndView editarEstagio(Estagio estagio, String acao) {
+		ModelAndView modelAndView = new ModelAndView();
+		if (acao.equals("modificar")) {
+			Optional<Estagio> estagioOpt = estagioRepository.findById(estagio.getId());
+			modelAndView = new ModelAndView("cadastroEstagio");
+			modelAndView.addObject("estagioObj", estagioOpt.get());
+		}else {
+			estagioRepository.deleteById(estagio.getId());
+			modelAndView = new ModelAndView("redirect:/gerenciarEstagios");
+		}
+		return modelAndView;
+	}
 }

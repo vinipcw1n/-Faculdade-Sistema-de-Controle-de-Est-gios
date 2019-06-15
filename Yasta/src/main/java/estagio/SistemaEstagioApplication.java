@@ -5,10 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.thymeleaf.extras.java8time.dialect.Java8TimeDialect;
 
 @SpringBootApplication
 @EntityScan(basePackages="estagio.model")
@@ -21,6 +23,11 @@ public class SistemaEstagioApplication extends SpringBootServletInitializer impl
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(SistemaEstagioApplication.class);
 	}
+	
+	@Bean
+    public Java8TimeDialect java8TimeDialect() {
+        return new Java8TimeDialect();
+    }
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaEstagioApplication.class, args);
