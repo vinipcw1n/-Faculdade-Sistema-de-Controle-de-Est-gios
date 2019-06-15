@@ -84,6 +84,26 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="emailAluno">Email do aluno estagiário</label> <input type="email"
+                                                class="form-control" name="emailAluno" placeholder="Email do aluno"
+                                                id="emailAluno" th:field="*{aluno.email}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <label for="empresa">Email da empresa</label> <input type="email"
+                                                class="form-control" name="empresa" placeholder="Email da empresa"
+                                                id="empresa" th:field="*{empresa.email}" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-12 text-center">
                                     <div th:if="!${edit}">
                                         <a href="/gerenciarEstagios"><button type="button"

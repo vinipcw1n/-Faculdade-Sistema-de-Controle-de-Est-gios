@@ -95,13 +95,23 @@
 										<label for="senha">Senha</label> <input type="password"
 											class="form-control" name="senha" th:field="*{senha}" placeholder="Sua senha"
 											required>
+
+										<input type="text" name="role" value="2" hidden="true">
+
+										<input type="text" name="aprovado" value="true" hidden="true">
 									</div>
 								</div>
 							</div>
 							<div class="row">
-								<div class="col-12 text-center">
-									<a href="/"><button type="button" class="btn btn-info mt-4">Voltar</button></a>
+								<div th:if="!${edit}" class="col-12 text-center">
+									<a href="/gerenciarUsuarios"><button type="button" class="btn btn-info mt-4">Voltar</button></a>
 									<button type="submit" class="btn btn-info mt-4">Cadastrar</button>
+								</div>
+
+								<div th:if="${edit}" class="col-12 text-center">
+									<a href="/gerenciarUsuarios"><button type="button"
+											class="btn btn-info mt-4">Voltar</button></a>
+									<button type="submit" class="btn btn-info mt-4">Salvar</button>
 								</div>
 							</div>
 						</form>
