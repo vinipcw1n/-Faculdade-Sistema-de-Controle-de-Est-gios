@@ -13,10 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import estagio.model.Admin;
 import estagio.model.Aluno;
 import estagio.model.Empresa;
+import estagio.model.Estagio;
 import estagio.model.Usuario;
 import estagio.repository.AdminRepository;
 import estagio.repository.AlunoRepository;
 import estagio.repository.EmpresaRepository;
+import estagio.repository.EstagioRepository;
 import estagio.repository.UsuarioRepository;
 
 @Controller
@@ -33,6 +35,9 @@ public class AdminController {
 
 	@Autowired
 	AdminRepository adminRepository;
+	
+	@Autowired
+	EstagioRepository estagioRepository;
 
 	@GetMapping("/gerenciarUsuarios")
 	public ModelAndView gerenciarUsuarios() {
@@ -49,31 +54,42 @@ public class AdminController {
 		modelAndView.addObject("usuariosAprovadosObj", usuariosAprovados);
 		return modelAndView;
 	}
+	
+	@GetMapping("/gerenciarEstagios")
+	public ModelAndView gerenciarEstagios() {
+		ModelAndView modelAndView = new ModelAndView("gerenciarEstagios");
+		
+		List<Estagio> estagios = estagioRepository.findAll();
+		
+		modelAndView.addObject("estagiosObj", estagios);
+		
+		return modelAndView;
+	}
 
 	@PostMapping("/usuario/editar")
 	public ModelAndView editarUsuario(Usuario user, String acao) {
 		ModelAndView modelAndView = new ModelAndView();
 		if (acao.equals("modificar")) {
-			if (!alunoRepository.findById(user.getId()).isEmpty()) {
+			if (alunoRepository.findById(user.getId()).isPresent()) {
 				Optional<Aluno> aluno = alunoRepository.findById(user.getId());
 				modelAndView = new ModelAndView("cadastroAluno");
 				modelAndView.addObject("userObj", aluno.get());
-			} else if (!empresaRepository.findById(user.getId()).isEmpty()) {
+			} else if (empresaRepository.findById(user.getId()).isPresent()) {
 				Optional<Empresa> empresa = empresaRepository.findById(user.getId());
 				modelAndView = new ModelAndView("cadastroEmpresa");
 				modelAndView.addObject("userObj", empresa.get());
-			} else if (!adminRepository.findById(user.getId()).isEmpty()) {
+			} else if (adminRepository.findById(user.getId()).isPresent()) {
 				Optional<Admin> admin = adminRepository.findById(user.getId());
 				modelAndView = new ModelAndView("cadastroAdmin");
 				modelAndView.addObject("userObj", admin.get());
 			}
 			modelAndView.addObject("edit", "");
 		} else if (acao.equals("remover")) {
-			if (!alunoRepository.findById(user.getId()).isEmpty()) {
+			if (alunoRepository.findById(user.getId()).isPresent()) {
 				alunoRepository.deleteById(user.getId());
-			} else if (!empresaRepository.findById(user.getId()).isEmpty()) {
+			} else if (empresaRepository.findById(user.getId()).isPresent()) {
 				empresaRepository.deleteById(user.getId());
-			} else if (!adminRepository.findById(user.getId()).isEmpty()) {
+			} else if (adminRepository.findById(user.getId()).isPresent()) {
 				adminRepository.deleteById(user.getId());
 			}
 			modelAndView = new ModelAndView("redirect:/gerenciarUsuarios");
@@ -89,5 +105,12 @@ public class AdminController {
 			usuarioRepository.aprovarEmpresa(usuario.getEmail());
 		}
 		return "redirect:/gerenciarUsuarios";
+	}
+	
+	@GetMapping("/cadastrar/estagio")
+	public ModelAndView cadastrarEstagio() {
+		ModelAndView modelAndView = new ModelAndView("cadastroEstagio");
+		modelAndView.addObject("estagioObj", new Estagio());
+		return modelAndView;
 	}
 }
