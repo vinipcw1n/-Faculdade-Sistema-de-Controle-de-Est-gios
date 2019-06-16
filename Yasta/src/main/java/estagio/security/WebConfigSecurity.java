@@ -43,7 +43,7 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
 		.antMatchers(HttpMethod.POST, "/salvar/experiencia").hasAnyRole("ALUNO")
 		.antMatchers(HttpMethod.POST, "/vaga").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.POST, "/vaga/editar").hasAnyRole("EMPRESA")
-		.antMatchers(HttpMethod.POST, "/minhasVagas").hasAnyRole("EMPRESA")
+		.antMatchers(HttpMethod.GET, "/minhasVagas").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.GET, "/curriculo/**").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.POST, "/salvar/candidatura").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.POST, "/salvar/vaga").hasAnyRole("EMPRESA")
