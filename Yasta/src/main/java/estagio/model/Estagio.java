@@ -2,6 +2,7 @@ package estagio.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,10 @@ public class Estagio {
 	@JoinColumn(name = "empresa_id")
 	private Empresa empresa;
 	
+	@ManyToOne
+	@JoinColumn(name = "aluno_id")
+	private Aluno aluno;
+	
 	private String descricao;
 	
 	private LocalDate dataInicio;
@@ -27,6 +32,12 @@ public class Estagio {
 	private LocalDate dataTermino;
 	
 	private int duracao;
+	
+	@ManyToOne
+	private SupervisorEstagio supervisorEmpresa;
+
+	@ManyToOne
+	private SupervisorEstagio supervisorInstituicao;
 	
 	@OneToOne
 	private RelatorioEstagio relatorio;
@@ -59,16 +70,20 @@ public class Estagio {
 		return dataInicio;
 	}
 
-	public void setDataInicio(LocalDate dataInicio) {
-		this.dataInicio = dataInicio;
+	public void setDataInicio(String dataInicio) {
+		String[] data = dataInicio.split("/");
+		LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+		this.dataInicio = dataFinal;
 	}
 
 	public LocalDate getDataTermino() {
 		return dataTermino;
 	}
 
-	public void setDataTermino(LocalDate dataTermino) {
-		this.dataTermino = dataTermino;
+	public void setDataTermino(String dataTermino) {
+		String[] data = dataTermino.split("/");
+		LocalDate dataFinal = LocalDate.of(Integer.parseInt(data[2]), Integer.parseInt(data[1]), Integer.parseInt(data[0]));
+		this.dataTermino = dataFinal;
 	}
 
 	public int getDuracao() {
@@ -86,5 +101,28 @@ public class Estagio {
 	public void setRelatorio(RelatorioEstagio relatorio) {
 		this.relatorio = relatorio;
 	}
+
+	public void setSupervisorEmpresa(SupervisorEstagio supervisorEmpresa) {
+		this.supervisorEmpresa = supervisorEmpresa;
+	}
 	
+	public SupervisorEstagio getSupervisorEmpresa() {
+		return supervisorEmpresa;
+	}
+
+	public void setSupervisorInstituicao(SupervisorEstagio supervisorInstituicao) {
+		this.supervisorInstituicao = supervisorInstituicao;
+	}
+	
+	public SupervisorEstagio getSupervisorInstituicao() {
+		return supervisorInstituicao;
+	}
+
+	public Aluno getAluno() {
+		return aluno;
+	}
+
+	public void setAluno(Aluno aluno) {
+		this.aluno = aluno;
+	}
 }

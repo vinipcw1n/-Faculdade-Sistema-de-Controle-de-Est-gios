@@ -2,18 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/style.css">
 
-<title>Cadastro de Aluno - Yasta</title>
+	<title>Cadastro de Aluno - Yasta</title>
 </head>
 
 <body class="h-100 bg-dark">
@@ -21,37 +18,32 @@
 
 	<div class="container-fluid mt-fix h-100 bg-light">
 		<div class="container text-center py-5 h-100">
-			<img class="img-fluid notDraggable" src="/img/logo2.png"
-				width="200rem" alt="">
+			<img class="img-fluid notDraggable" src="/img/logo2.png" width="200rem" alt="">
 			<div class="jumbotron mt-5 py-4 h-100">
 				<div class="row">
 					<div class="col-12 mb-2">
 						<h1>Cadastro de Aluno</h1>
 					</div>
 					<div class="col-12">
-						<form class="text-left" method="post" action="salvar/aluno"
-							th:object="${userObj}">
+						<form class="text-left" method="post" action="salvar/aluno" th:object="${userObj}">
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<label for="nome">Nome</label>
 									<div class="input-group mb-3">
 										<div class="input-group-prepend">
-											<span class="input-group-text" id="basic-addon1"><img
-												src="/icons/user.svg" width="17rem"></span>
+											<span class="input-group-text"><img src="/icons/user.svg"
+													width="17rem"></span>
 										</div>
-										<input type="text" class="form-control"
-											placeholder="Seu nome completo" aria-label="Nome completo"
-											name="nome" aria-describedby="basic-addon1" required
-											th:field="*{nome}"> <input type="hidden" name="id"
-											th:field="*{id}">
+										<input type="text" class="form-control" placeholder="Seu nome completo"
+											aria-label="Nome completo" name="nome" required th:field="*{nome}"> <input
+											type="hidden" name="id" th:field="*{id}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="email">Endereço de email</label> <input
-											type="email" class="form-control" name="email"
-											placeholder="Seu endereço de email" required
-											th:field="*{email}">
+										<label for="email">Endereço de email</label> <input type="email"
+											class="form-control" name="email" placeholder="Seu endereço de email"
+											required th:field="*{email}">
 									</div>
 								</div>
 							</div>
@@ -59,72 +51,63 @@
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="prontuario">Prontuário</label> <input type="text"
-											class="form-control" name="prontuario"
-											placeholder="Seu prontuário" required
+											class="form-control" name="prontuario" placeholder="Seu prontuário" required
 											th:field="*{prontuario}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="telefone">Telefone</label> <input type="text"
-											class="form-control" name="telefone"
-											placeholder="Seu telefone" required th:field="*{telefone}">
+										<label for="telefone">Telefone</label> <input type="text" class="form-control"
+											name="telefone" placeholder="Seu telefone" required th:field="*{telefone}">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="endereco">Endereço</label> <input type="text"
-											class="form-control" name="endereco"
-											placeholder="Seu endereço" required th:field="*{endereco}">
+										<label for="endereco">Endereço</label> <input type="text" class="form-control"
+											name="endereco" placeholder="Seu endereço" required th:field="*{endereco}">
 									</div>
 								</div>
 								<div class="col-8 col-md-4">
 									<div class="form-group">
-										<label for="cidade">Cidade</label> <input type="text"
-											class="form-control" name="cidade" placeholder="Cidade"
-											required th:field="*{cidade}">
+										<label for="cidade">Cidade</label> <input type="text" class="form-control"
+											name="cidade" placeholder="Cidade" required th:field="*{cidade}">
 									</div>
 								</div>
 								<div class="col-4 col-md-2">
 									<div class="form-group">
-										<label for="cep">CEP</label> <input type="text"
-											class="form-control" name="cep" placeholder="CEP" required
-											th:field="*{cep}">
+										<label for="cep">CEP</label> <input type="text" class="form-control" name="cep"
+											placeholder="CEP" required th:field="*{cep}">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="estado">Estado</label> <input type="text"
-											class="form-control" name="estado" placeholder="Estado"
-											required th:field="*{estado}">
+										<label for="estado">Estado</label> <input type="text" class="form-control"
+											name="estado" placeholder="Estado" required th:field="*{estado}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="senha">Senha</label> <input type="password"
-											class="form-control" name="senha" placeholder="Sua senha"
-											required th:value="*{senha}">
+										<label for="senha">Senha</label> <input type="password" class="form-control"
+											name="senha" placeholder="Sua senha" required th:value="*{senha}">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="curso">Curso</label> <input type="text"
-											class="form-control" name="curso" placeholder="Seu curso"
-											required th:field="*{curso}">
+										<label for="curso">Curso</label> <input type="text" class="form-control"
+											name="curso" placeholder="Seu curso" required th:field="*{curso}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
-										<label for="dataIngresso">Data de ingresso</label> <input
-											type="text" class="form-control" name="dataIngresso"
-											placeholder="Data de ingresso" id="dataIngresso" required
-											th:value="*{dataIngresso}">
+										<label for="dataIngresso">Data de ingresso</label> <input type="text"
+											class="form-control" name="dataIngresso" placeholder="Data de ingresso"
+											id="dataIngresso" required th:value="*{dataIngresso}">
 										<!-- Cargo -->
 										<input type="text" name="role" value="0" hidden="true">
 
@@ -163,37 +146,42 @@
 	</footer>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-	<link
-		href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
-		rel="Stylesheet" type="text/css" />
+	<link href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css" rel="Stylesheet" type="text/css" />
 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 		crossorigin="anonymous"></script>
-	<script
-		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
 
 	<script type="text/javascript">
-			$(() => {
-				$("#dataIngresso").datepicker({
-					changeYear: true,
-					changeMonth: true,
-	                dateFormat: 'dd/mm/yy',
-				    dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-				    dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-				    dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-				    monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-				    monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
-				    nextText: 'Próximo',
-				    prevText: 'Anterior'
-				});
-			})
-			
+		$(() => {
+			$("#dataIngresso").datepicker({
+				changeYear: true,
+				changeMonth: true,
+				dateFormat: 'dd/mm/yy',
+				dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+				dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+				dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+				monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+				monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+				nextText: 'Próximo',
+				prevText: 'Anterior'
+			});
+		})
+
+		$(document).ready(() => {
+			if (new Date($("#dataIngresso").val())) {
+				var data = new Date($("#dataIngresso").val());
+				data.setDate(data.getDate() + 1);
+
+				$("#dataIngresso").val(data.toLocaleDateString());
+			}
+		});
+
 		$("#menu").load("/menu");
-		</script>
+	</script>
 </body>
 
 </html>
