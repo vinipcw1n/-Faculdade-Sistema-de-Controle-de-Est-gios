@@ -180,17 +180,21 @@
         });
 
         $(document).ready(() => {
-            if(new Date($("#dataInicio").val())){
-                var data = new Date($("#dataInicio").val());
-                data.setDate(data.getDate() + 1);
+            if($("#dataInicio").val() !== ""){
+                if(new Date($("#dataInicio").val())){
+                    var data = new Date($("#dataInicio").val());
+                    data.setDate(data.getDate() + 1);
 
-                $("#dataInicio").val(data.toLocaleDateString());
+                    $("#dataInicio").val(data.toLocaleDateString());
+                }
             }
-            if(new Date($("#dataTermino").val())){
-                var data = new Date($("#dataTermino").val());
-                data.setDate(data.getDate() + 1);
+            if($("#dataTermino").val() !== ""){
+                if(new Date($("#dataTermino").val())){
+                    var data = new Date($("#dataTermino").val());
+                    data.setDate(data.getDate() + 1);
 
-                $("#dataTermino").val(data.toLocaleDateString());
+                    $("#dataTermino").val(data.toLocaleDateString());
+                }
             }
         });
 

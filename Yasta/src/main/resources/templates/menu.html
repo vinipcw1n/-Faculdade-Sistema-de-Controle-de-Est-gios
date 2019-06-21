@@ -20,6 +20,7 @@
 				href="/gerenciarEstagios" sec:authorize="hasAnyRole('ROLE_ADMIN')">Gerenciar Estágios</a></li>	
 			<li class="nav-item"><a class="nav-link" href="/vagas">Vagas</a></li>
 			<li class="nav-item"><a class="nav-link" href="/minhasVagas" sec:authorize="hasAnyRole('ROLE_EMPRESA')">Minhas Vagas</a></li>
+			<li class="nav-item"><a class="nav-link" href="/meusEstagios" sec:authorize="hasAnyRole('ROLE_ALUNO') || hasAnyRole('ROLE_SUPERVISOR')">Meus Estágios</a></li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
 			<li class="nav-item"><a class="nav-link" href="/logout" sec:authorize="isAuthenticated()">Sair</a></li>

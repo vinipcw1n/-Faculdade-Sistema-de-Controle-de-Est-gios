@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <title>Meus Estágios - Yasta</title>
+</head>
+
+<body class="h-100 bg-dark">
+    <div id="menu"></div>
+
+    <div class="container-fluid mt-fix h-100 bg-light">
+        <div class="container text-center py-5 h-100">
+            <div class="jumbotron py-4 h-100">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row py-3">
+                            <div class="col-12">
+                                <h1>Meus Estágios</h1>
+                            </div>
+                        </div>
+                        <div th:switch="${estagiosObj.isEmpty()}">
+                            <div class="text-center alert alert-danger" role="alert" th:case="true">
+                                <h5>Você não possui estágios cadastrados!</h5>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled text-left" th:each="estagio : ${estagiosObj}">
+                            <div class="row">
+                                <div class="col-12 col-md-8">
+                                    <li class="media"><img src="/icons/job.svg" width="60px" class="mr-3">
+                                        <div class="media-body">
+                                            <h5>Supervisores:</h5>
+                                            <h5 class="mt-0 mb-1" th:text="${estagio.supervisorInstituicao.nome}"></h5>
+                                            <h5 class="mt-0 mb-1" th:text="${estagio.supervisorEmpresa.nome}"></h5>
+                                            <span th:text="${estagio.empresa.nome}"></span>
+                                            <br> <span>Data de início: </span><label th:text="${#temporals.format(estagio.dataInicio, 'dd/MM/yyyy')}"></label><br> <span>Data
+												de término: </span><label th:text="${#temporals.format(estagio.dataTermino,'dd/MM/yyyy')}"></label>
+										</div></li>
+                                </div>
+                                <div class="col-12 col-md-4" sec:authorize="hasAnyRole('ROLE_ALUNO')" th:switch="${estagio.relatorio} == null">
+                                    <div th:case="true" class="text-right">
+                                        <form method="POST" action="/cadastrar/relatorio">
+                                            <input name="source" value="meusEstagios" hidden>
+                                            <input name="id" th:value="${estagio.id}" hidden>
+                                            <button type="submit" name="acao" value="cadastrar"
+                                                class="btn btn-success btn-sm mt-1">Cadastrar relatório</button>
+                                        </form>
+                                    </div>
+                                    <div th:case="false">
+                                        <div class="text-right">
+                                            <form method="POST" action="/relatorio/editar">
+                                                <input name="source" value="meusEstagios" hidden>
+                                                <input name="id" th:value="${estagio.relatorio.id}" hidden>
+                                                <button type="submit" name="acao" value="modificar"
+                                                    class="btn btn-info btn-sm mt-1">Editar relatório</button>
+                                            </form>
+                                        </div>
+                                        <div class="text-right">
+                                            <form method="POST" action="/relatorio/editar">
+                                                <input name="source" value="meusEstagios" hidden>
+                                                <input name="id" th:value="${estagio.relatorio.id}" hidden>
+                                                <button type="submit" name="acao" value="visualizar"
+                                                class="btn btn-info btn-sm mt-1">Ver relatório</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4" sec:authorize="hasAnyRole('ROLE_SUPERVISOR')">
+                                    <div th:if="${estagio.relatorio} != null">
+                                        <div class="text-right">
+                                            <form method="POST" action="/relatorio/editar">
+                                                <input name="source" value="meusEstagios" hidden>
+                                                <input name="id" th:value="${estagio.relatorio.id}" hidden>
+                                                <button type="submit" name="acao" value="observacoes"
+                                                    class="btn btn-info btn-sm mt-1">Fazer observações</button>
+                                            </form>
+                                        </div>
+                                        <div class="text-right">
+                                            <form method="POST" action="/relatorio/editar">
+                                                <input name="source" value="meusEstagios" hidden>
+                                                <input name="id" th:value="${estagio.relatorio.id}" hidden>
+                                                <button type="submit" name="acao" value="visualizar"
+                                                class="btn btn-info btn-sm mt-1">Ver relatório</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+							</div>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="container-fluid bg-dark text-white">
+		<div class="container pt-4">
+			<div class="container-fluid">
+				<p>
+					Yasta - Sistema de estágios<br>Desenvolvido por: Fabricio
+					Rocha, Gabriel Zutião, Jady Domingues, Leonardo Cerminaro e
+					Vinícius Perna<br>2019
+				</p>
+			</div>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<link
+		href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
+		rel="Stylesheet" type="text/css" />
+	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+        $("#menu").load("/menu");
+    </script>
+</body>
+
+</html>

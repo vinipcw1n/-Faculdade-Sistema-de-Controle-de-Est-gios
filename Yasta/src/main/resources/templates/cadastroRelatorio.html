@@ -10,7 +10,7 @@
 
 	<link rel="stylesheet" href="/css/style.css">
 
-	<title>Cadastro de Relatório - Yasta</title>
+	<title>Relatório de estágio - Yasta</title>
 </head>
 
 <body class="h-100 bg-dark">
@@ -22,17 +22,32 @@
 			<div class="jumbotron mt-5 py-4 h-100">
 				<div class="row">
 					<div class="col-12 mb-2">
-						<h1>Cadastro de Relatório</h1>
+						<h1>Relatório de estágio</h1>
 					</div>
 					<div class="col-12">
-						<form class="text-left" method="post" action="salvar/vaga" th:object="${vagaObj}">
+						<form class="text-left" method="post" action="/salvar/relatorio" th:object="${relatorioObj}">
+							<div class="row">
+								<div class="col-12">
+									<div th:if="${acao != 'cadastrar'}" th:switch="*{validado}">
+										<div th:case="true" class="alert alert-success" role="alert">
+											Relatório validado
+										</div>
+										<div th:case="false" class="alert alert-danger" role="alert">
+											<h5>Relatório não validado</h5>
+										</div>
+									</div>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-12">
 									<div class="form-group">
 										<div class="form-group">
-											<label for="data">Data de entrega</label> <input type="text"
-												class="form-control" name="data" placeholder="Data de entrega" id="data"
-												th:field="*{data}" required>
+											<input name="id" th:field="*{id}" hidden>
+											<input name="estagioID" th:field="*{estagio.id}" hidden>
+											<input name="source" th:value="${source}" hidden>
+											<label for="data">Data de entrega:</label> <input type="text"
+												class="form-control" name="data" placeholder="Data de entrega"
+												id="data" required th:value="*{data}" th:disabled="${acao == 'visualizar' || acao == 'observacoes'}">
 										</div>
 									</div>
 								</div>
@@ -43,26 +58,68 @@
 										<div class="form-group">
 											<label for="texto">Texto</label>
 											<textarea class="form-control" id="texto" rows="3" style="resize: none"
-												name="texto" th:field="*{texto}" required></textarea>
+												name="texto" th:field="*{texto}" th:disabled="${acao == 'visualizar'  || acao == 'observacoes'}" required></textarea>
 										</div>
 									</div>
 								</div>
 							</div>
+							<div sec:authorize="!(hasAnyRole('ROLE_ALUNO'))" class="row">
+								<div class="col-12">
+									<div class="form-group">
+										<div class="form-group">
+											<div sec:authorize="hasAnyRole('ROLE_SUPERVISOR')">
+												<input type="hidden" name="data" th:value="*{#temporals.format(data, 'dd/MM/yyyy')}">
+												<input type="hidden" name="texto" th:value="*{texto}">
+											</div>
+											<label for="observacoes">Observações</label>
+											<textarea class="form-control" id="observacoes" rows="3" style="resize: none"
+												name="observacoes" th:field="*{observacoes}" th:disabled="${acao == 'visualizar'}"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div sec:authorize="hasAnyRole('ROLE_ALUNO')" class="row">
+									<div class="col-12">
+										<div class="form-group">
+											<div class="form-group">
+												<input type="hidden" name="observacoes" th:value="*{observacoes}">
+												<label for="observacoes">Observações</label>
+												<textarea class="form-control" id="observacoes" rows="3" style="resize: none"
+													name="observacoesS" th:field="*{observacoes}" disabled></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
 							<div class="row">
-								<div class="col-12 text-center">
-									<div th:if="!${edit}">
+								<div th:switch="${acao}" class="col-12 text-center">
+									<div th:case="'cadastrar'">
 										<a href="/meusEstagios"><button type="button"
 												class="btn btn-info mt-4">Voltar</button></a>
 										<button type="submit" class="btn btn-info mt-4">Cadastrar</button>
 									</div>
-									<div th:if="${edit}">
-										<a href="/meusEstagios"><button type="button"
+									<div th:case="'visualizar'">
+										<a th:href="@{|/${source}|}"><button type="button"
 												class="btn btn-info mt-4">Voltar</button></a>
+									</div>
+									<div th:case="*">
+										<a th:href="@{|/${source}|}"><button type="button"
+											class="btn btn-info mt-4">Voltar</button></a>
 										<button type="submit" class="btn btn-info mt-4">Salvar</button>
 									</div>
 								</div>
 							</div>
 						</form>
+						<div class="row mt-5">
+							<div sec:authorize="hasAnyRole('ROLE_ADMIN')" class="col-12 text-center">
+								<h5>Painel de administrador</h5>
+								<form method="POST" action="/relatorio/editar">
+									<input name="id" th:value="${relatorioObj.id}" hidden>
+									<input name="source" value="gerenciarEstagios" hidden>
+									<button type="submit" name="acao" value="validar" class="btn btn-success mt-4">Validar</button>
+									<button type="submit" name="acao" value="remover" class="btn btn-danger mt-4">Remover</button>
+								</form>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -107,11 +164,13 @@
 		})
 
 		$(document).ready(() => {
-			if (new Date($("#data").val())) {
-				var data = new Date($("#data").val());
-				data.setDate(data.getDate() + 1);
+			if($("#data").val() !== ""){
+				if (new Date($("#data").val())) {
+					var data = new Date($("#data").val());
+					data.setDate(data.getDate() + 1);
 
-				$("#data").val(data.toLocaleDateString());
+					$("#data").val(data.toLocaleDateString());
+				}
 			}
 		});
 

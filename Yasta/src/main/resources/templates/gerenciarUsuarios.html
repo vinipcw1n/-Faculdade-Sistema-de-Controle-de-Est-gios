@@ -60,7 +60,8 @@
 								<div class="col-12 col-md-4 text-right">
 									<form method="POST" action="aprovarUsuario">
 										<input type="hidden" name="id" th:value="${user.id}">
-										<input type="hidden" name="email" th:value="${user.email}">
+										<input type="hidden" name="email"
+											th:value="${user.email}">
 										<button type="submit" name="acao" value="aprovar"
 											class="btn btn-info btn-sm mt-1">Aprovar</button>
 										<button type="submit" name="acao" value="negar"

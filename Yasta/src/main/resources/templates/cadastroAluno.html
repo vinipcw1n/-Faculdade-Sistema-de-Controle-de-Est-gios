@@ -172,11 +172,13 @@
 		})
 
 		$(document).ready(() => {
-			if (new Date($("#dataIngresso").val())) {
-				var data = new Date($("#dataIngresso").val());
-				data.setDate(data.getDate() + 1);
+			if($("#dataIngresso").val() !== ""){
+				if (new Date($("#dataIngresso").val())) {
+					var data = new Date($("#dataIngresso").val());
+					data.setDate(data.getDate() + 1);
 
-				$("#dataIngresso").val(data.toLocaleDateString());
+					$("#dataIngresso").val(data.toLocaleDateString());
+				}
 			}
 		});
 

@@ -22,6 +22,10 @@ public class RelatorioEstagio {
 	private LocalDate data;
 	
 	private String texto;
+	
+	private String observacoes;
+	
+	private boolean validado;
 
 	public Long getId() {
 		return id;
@@ -43,8 +47,10 @@ public class RelatorioEstagio {
 		return data;
 	}
 
-	public void setData(LocalDate data) {
-		this.data = data;
+	public void setData(String data) {
+		String[] dataN = data.split("/");
+		LocalDate dataFinal = LocalDate.of(Integer.parseInt(dataN[2]), Integer.parseInt(dataN[1]), Integer.parseInt(dataN[0]));
+		this.data = dataFinal;
 	}
 
 	public String getTexto() {
@@ -53,6 +59,22 @@ public class RelatorioEstagio {
 
 	public void setTexto(String texto) {
 		this.texto = texto;
+	}
+
+	public boolean isValidado() {
+		return validado;
+	}
+
+	public void setValidado(boolean validado) {
+		this.validado = validado;
+	}
+
+	public String getObservacoes() {
+		return observacoes;
+	}
+
+	public void setObservacoes(String observacoes) {
+		this.observacoes = observacoes;
 	}
 	
 }
