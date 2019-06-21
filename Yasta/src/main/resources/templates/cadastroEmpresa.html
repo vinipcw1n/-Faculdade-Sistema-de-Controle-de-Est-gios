@@ -38,6 +38,7 @@
 											aria-label="Nome completo" name="nome"
 											required th:value="*{nome}">
 										<input type="hidden" name="id" th:value="*{id}">
+										<input type="hidden" name="acao" th:value="${acao}">
 									</div>
 								</div>
 								<div class="col-12 col-md-3">
@@ -52,7 +53,8 @@
 									<div class="form-group">
 										<label for="email">Endereço de email</label> <input type="email"
 											class="form-control" name="email" placeholder="Endereço de email da empresa"
-											required th:field="*{email}">
+											required th:disabled="${edit}" th:field="*{email}">
+										<input th:if="${edit}" type="hidden" name="email" th:value="*{email}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">

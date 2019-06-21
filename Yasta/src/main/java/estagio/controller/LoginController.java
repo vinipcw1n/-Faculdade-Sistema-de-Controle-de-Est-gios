@@ -11,10 +11,14 @@ import estagio.model.Admin;
 import estagio.model.Aluno;
 import estagio.model.Curriculo;
 import estagio.model.Empresa;
+import estagio.model.SupervisorEstagio;
+import estagio.model.Usuario;
 import estagio.repository.AdminRepository;
 import estagio.repository.AlunoRepository;
 import estagio.repository.CurriculoRepository;
 import estagio.repository.EmpresaRepository;
+import estagio.repository.SupervisorEstagioRepository;
+import estagio.repository.UsuarioRepository;
 
 @Controller
 public class LoginController {
@@ -30,6 +34,9 @@ public class LoginController {
 	
 	@Autowired
 	private CurriculoRepository curriculoRepository;
+	
+	@Autowired
+	private SupervisorEstagioRepository supervisorEstagioRepository;
 	
 //	@GetMapping("/")
 //	public String index() {
@@ -63,25 +70,53 @@ public class LoginController {
 	}
 	
 	@PostMapping("**/salvar/aluno")
-	public String salvarAluno(Aluno usuario) {
-		Curriculo curriculo = new Curriculo();		
-		curriculo = curriculoRepository.save(curriculo);
+	public String salvarAluno(Aluno usuario, String acao) {
+		Usuario aluno = alunoRepository.findAlunoByEmail(usuario.getEmail());
+		Empresa empresa = empresaRepository.findEmpresaByEmail(usuario.getEmail());
+		Admin admin = adminRepository.findAdminByEmail(usuario.getEmail());
+		SupervisorEstagio supervisor = supervisorEstagioRepository.findSupervisorEstagioByEmail(usuario.getEmail());
 		
-		usuario.setCurriculo(curriculo);
-		alunoRepository.save(usuario);
-		return "redirect:/";
+		if((aluno == null && empresa == null && admin == null && supervisor == null) || (acao.equals("modificar"))) {
+			Curriculo curriculo = new Curriculo();
+			curriculo = curriculoRepository.save(curriculo);
+			
+			usuario.setCurriculo(curriculo);
+			alunoRepository.save(usuario);
+			return "redirect:/";
+		}else {
+			return "redirect:/cadastrar/aluno?error=true";
+		}
+		
 	}
 	
 	@PostMapping("**/salvar/empresa")
-	public String salvarEmpresa(Empresa usuario) {
-		empresaRepository.save(usuario);
-		return "redirect:/";
+	public String salvarEmpresa(Empresa usuario, String acao) {
+		Usuario aluno = alunoRepository.findAlunoByEmail(usuario.getEmail());
+		Empresa empresa = empresaRepository.findEmpresaByEmail(usuario.getEmail());
+		Admin admin = adminRepository.findAdminByEmail(usuario.getEmail());
+		SupervisorEstagio supervisor = supervisorEstagioRepository.findSupervisorEstagioByEmail(usuario.getEmail());
+		
+		if((aluno == null && empresa == null && admin == null && supervisor == null) || (acao.equals("modificar"))) {
+			empresaRepository.save(usuario);
+			return "redirect:/";
+		}else {
+			return "redirect:/cadastrar/empresa?error=true";
+		}
 	}
 	
 	@PostMapping("**/salvar/admin")
-	public String salvarAdmin(Admin admin) {
-		adminRepository.save(admin);
-		return "redirect:/";
+	public String salvarAdmin(Admin usuario, String acao) {
+		Usuario aluno = alunoRepository.findAlunoByEmail(usuario.getEmail());
+		Empresa empresa = empresaRepository.findEmpresaByEmail(usuario.getEmail());
+		Admin admin = adminRepository.findAdminByEmail(usuario.getEmail());
+		SupervisorEstagio supervisor = supervisorEstagioRepository.findSupervisorEstagioByEmail(usuario.getEmail());
+		
+		if((aluno == null && empresa == null && admin == null && supervisor == null) || (acao.equals("modificar"))) {
+			adminRepository.save(usuario);
+			return "redirect:/";
+		}else {
+			return "redirect:/cadastrar/admin?error=true";
+		}
 	}
 	
 	@GetMapping("**/menu")

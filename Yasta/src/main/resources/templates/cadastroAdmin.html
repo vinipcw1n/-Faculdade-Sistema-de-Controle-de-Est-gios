@@ -42,16 +42,17 @@
 										<input type="text" class="form-control"
 											placeholder="Seu nome completo" aria-label="Nome completo"
 											name="nome" aria-describedby="basic-addon1" required
-											th:field="*{nome}"> <input name="id" th:field="*{id}"
-											hidden>
+											th:field="*{nome}">
+										<input name="id" th:field="*{id}" hidden>
+										<input type="hidden" name="acao" th:value="${acao}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="email">Endereço de email</label> <input
 											type="email" class="form-control" name="email"
-											placeholder="Seu endereço de email" required
-											th:field="*{email}">
+											placeholder="Seu endereço de email" required th:disabled="${edit}" th:field="*{email}">
+										<input th:if="${edit}" type="hidden" name="email" th:value="*{email}">
 									</div>
 								</div>
 							</div>
@@ -67,7 +68,7 @@
 									<div class="form-group">
 										<label for="telefone">Telefone</label> <input type="text"
 											class="form-control" name="telefone"
-											placeholder="Seu telefone" required th:field="*{rf}">
+											placeholder="Seu telefone" required th:field="*{telefone}">
 									</div>
 								</div>
 							</div>

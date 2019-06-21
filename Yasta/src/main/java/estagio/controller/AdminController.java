@@ -94,6 +94,7 @@ public class AdminController {
 				modelAndView.addObject("userObj", supervisor.get());
 			}
 			modelAndView.addObject("edit", "");
+			modelAndView.addObject("acao",acao);
 		} else if (acao.equals("remover")) {
 			if (alunoRepository.findById(user.getId()).isPresent()) {
 				alunoRepository.deleteById(user.getId());
@@ -134,9 +135,18 @@ public class AdminController {
 	}
 	
 	@PostMapping("**/salvar/supervisor")
-	public String salvarSupervisor(SupervisorEstagio supervisor) {
-		supervisorEstagioRepository.save(supervisor);
-		return("redirect:/gerenciarUsuarios");
+	public String salvarSupervisor(SupervisorEstagio usuario, String acao) {
+		Usuario aluno = alunoRepository.findAlunoByEmail(usuario.getEmail());
+		Empresa empresa = empresaRepository.findEmpresaByEmail(usuario.getEmail());
+		Admin admin = adminRepository.findAdminByEmail(usuario.getEmail());
+		SupervisorEstagio supervisor = supervisorEstagioRepository.findSupervisorEstagioByEmail(usuario.getEmail());
+		
+		if((aluno == null && empresa == null && admin == null && supervisor == null) || (acao.equals("modificar"))) {
+			supervisorEstagioRepository.save(usuario);
+			return("redirect:/gerenciarUsuarios");
+		}else {
+			return("redirect:/cadastrar/supervisor?error=true");
+		}
 	}
 	
 	@PostMapping("**/salvar/estagio")

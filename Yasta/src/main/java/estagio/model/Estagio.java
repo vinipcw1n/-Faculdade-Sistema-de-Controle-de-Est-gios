@@ -39,7 +39,7 @@ public class Estagio {
 	@ManyToOne
 	private SupervisorEstagio supervisorInstituicao;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private RelatorioEstagio relatorio;
 
 	public Long getId() {

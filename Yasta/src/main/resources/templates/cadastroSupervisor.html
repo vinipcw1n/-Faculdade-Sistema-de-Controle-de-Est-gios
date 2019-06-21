@@ -41,13 +41,16 @@
 										<input type="text" class="form-control"
 											placeholder="Seu nome completo" aria-label="Nome completo"
 											name="nome" aria-describedby="basic-addon1" th:field="*{nome}" required>
+										<input type="hidden" name="id" th:value="*{id}">
+										<input type="hidden" name="acao" th:value="${acao}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="email">Endereço de email</label> <input
 											type="email" class="form-control" name="email"
-											placeholder="Seu endereço de email" th:field="*{email}" required>
+											placeholder="Seu endereço de email" th:field="*{email}" required th:disabled="${edit}">
+										<input th:if="${edit}" type="hidden" name="email" th:value="*{email}">
 									</div>
 								</div>
 							</div>

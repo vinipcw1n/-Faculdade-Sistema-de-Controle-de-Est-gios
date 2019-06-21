@@ -3,6 +3,7 @@ package estagio.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -12,7 +13,7 @@ public class Empresa extends Usuario {
 	private String cnpj;
 	private String responsavel;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Vaga> vaga = new ArrayList<>();
 	
 

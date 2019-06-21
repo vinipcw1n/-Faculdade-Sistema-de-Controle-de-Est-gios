@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -17,11 +18,11 @@ public class Aluno extends Usuario {
 	private String curso;
 	private LocalDate dataIngresso;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "curriculo_id")
 	private Curriculo curriculo;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Estagio> estagios = new ArrayList<>();
 
 	public String getProntuario() {
