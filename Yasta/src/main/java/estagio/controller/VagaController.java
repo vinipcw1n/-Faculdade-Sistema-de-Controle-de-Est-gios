@@ -125,4 +125,19 @@ public class VagaController {
 		return modelAndView;
 	}
 	
+	@PostMapping("**/abrir/vaga")
+	public String abrirVaga(Long id) {
+		Vaga vaga = vagaRepository.findById(id).get();
+		
+		if(vaga.isAberta()) {
+			vaga.setAberta(false);
+		} else {
+			vaga.setAberta(true);
+		}
+		
+		vagaRepository.save(vaga);
+		
+		return "redirect:/minhasVagas";
+	}
+	
 }
