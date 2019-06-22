@@ -19,6 +19,6 @@ public interface AlunoRepository extends CrudRepository<Aluno, Long>{
 	@Query("Select a from Aluno a WHERE id = ?1")
 	Aluno findAlunoById(Long id);
 	
-	@Query("SELECT v.candidatos FROM Vaga v RIGHT JOIN v.candidatos c WHERE v.id = ?1")
+	@Query("SELECT DISTINCT v.candidatos FROM Vaga v RIGHT JOIN v.candidatos c WHERE v.id = ?1")
 	List<Aluno> listarCandidatosVaga(Long idVaga);
 }
