@@ -41,3 +41,7 @@
 footer {
     height: 100%;
 }
+
+.bg-welcome {
+    background-color: rgba(47,79,79,.5);
+}
