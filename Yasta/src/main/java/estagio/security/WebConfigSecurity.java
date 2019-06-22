@@ -28,28 +28,36 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter{
 		.authorizeRequests() //Permitir/restringir acessos.
 		.antMatchers(HttpMethod.GET, "/cadastrar/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/cadastrar/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/cadastrar/supervisor").hasAnyRole("ADMIN") //OK
+		.antMatchers(HttpMethod.POST, "/cadastrar/supervisor").hasAnyRole("ADMIN") //OK
 		.antMatchers(HttpMethod.GET, "/salvar/**").permitAll()
 		.antMatchers(HttpMethod.POST, "/salvar/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/salvar/supervisor").hasAnyRole("ADMIN") //OK
+		.antMatchers(HttpMethod.POST, "/salvar/supervisor").hasAnyRole("ADMIN") //OK
 		.antMatchers(HttpMethod.GET, "/menu").permitAll()
 		.antMatchers(HttpMethod.GET, "/vagas").permitAll()
 		.antMatchers(HttpMethod.GET, "/cadastrar/admin").hasAnyRole("ADMIN")
 		.antMatchers(HttpMethod.POST, "/salvar/admin").hasAnyRole("ADMIN")
-		.antMatchers(HttpMethod.GET, "/gerenciarUsuarios").hasAnyRole("ADMIN")
-		.antMatchers(HttpMethod.POST, "/usuario/editar").hasAnyRole("ADMIN")
-		.antMatchers(HttpMethod.POST, "/aprovarUsuario").hasAnyRole("ADMIN")
-		.antMatchers(HttpMethod.GET, "/gerenciarUsuarios").hasAnyRole("ADMIN")
-		.antMatchers(HttpMethod.GET, "/curriculo").hasAnyRole("ALUNO")
+		.antMatchers(HttpMethod.POST, "/usuario/editar").hasAnyRole("ADMIN") //OK
+		.antMatchers(HttpMethod.POST, "/aprovarUsuario").hasAnyRole("ADMIN") //OK
+		.antMatchers(HttpMethod.GET, "/gerenciarUsuarios").hasAnyRole("ADMIN") //OK
+		.antMatchers(HttpMethod.GET, "/gerenciarEstagios").hasAnyRole("ADMIN") //OK
+		.antMatchers(HttpMethod.GET, "/curriculo").hasAnyRole("ALUNO") //OK
 		.antMatchers(HttpMethod.POST, "/salvar/formacao").hasAnyRole("ALUNO")
 		.antMatchers(HttpMethod.POST, "/salvar/experiencia").hasAnyRole("ALUNO")
 		.antMatchers(HttpMethod.POST, "/salvar/relatorio").hasAnyRole("ALUNO")
 		.antMatchers(HttpMethod.POST, "/salvar/relatorio").hasAnyRole("ADMIN")
-		.antMatchers(HttpMethod.POST, "/meusEstagios").hasAnyRole("ALUNO")
+		.antMatchers(HttpMethod.POST, "/meusEstagios").hasAnyRole("ALUNO") //OK
 		.antMatchers(HttpMethod.POST, "/vaga").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.POST, "/vaga/editar").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.GET, "/minhasVagas").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.GET, "/curriculo/**").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.POST, "/salvar/candidatura").hasAnyRole("EMPRESA")
 		.antMatchers(HttpMethod.POST, "/salvar/vaga").hasAnyRole("EMPRESA")
+		.antMatchers(HttpMethod.GET, "/gerenciarUsuarios").hasAnyRole("ADMIN") //OK
+		.antMatchers(HttpMethod.POST, "/estagio/editar").hasAnyRole("ADMIN") //OK
+		.antMatchers(HttpMethod.POST, "/relatorio/editar").hasAnyRole("ALUNO") //OK
+		
 		
 		//.antMatchers(HttpMethod.GET, "/menu").hasAnyRole("ADMIN", "GERENTE", "ALMOXARIFE", "VENDEDOR")
 		
