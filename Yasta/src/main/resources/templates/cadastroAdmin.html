@@ -13,6 +13,8 @@
 
 <link rel="stylesheet" href="/css/style.css">
 
+
+
 <title>Cadastro de Admin - Yasta</title>
 </head>
 
@@ -42,17 +44,19 @@
 										<input type="text" class="form-control"
 											placeholder="Seu nome completo" aria-label="Nome completo"
 											name="nome" aria-describedby="basic-addon1" required
-											th:field="*{nome}">
-										<input name="id" th:field="*{id}" hidden>
-										<input type="hidden" name="acao" th:value="${acao}">
+											th:field="*{nome}"> <input name="id" th:field="*{id}"
+											hidden> <input type="hidden" name="acao"
+											th:value="${acao}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="email">Endereço de email</label> <input
 											type="email" class="form-control" name="email"
-											placeholder="Seu endereço de email" required th:disabled="${edit}" th:field="*{email}">
-										<input th:if="${edit}" type="hidden" name="email" th:value="*{email}">
+											placeholder="Seu endereço de email" required
+											th:disabled="${edit}" th:field="*{email}"> <input
+											th:if="${edit}" type="hidden" name="email"
+											th:value="*{email}">
 									</div>
 								</div>
 							</div>
@@ -68,7 +72,8 @@
 									<div class="form-group">
 										<label for="telefone">Telefone</label> <input type="text"
 											class="form-control" name="telefone"
-											placeholder="Seu telefone" required th:field="*{telefone}">
+											placeholder="Seu telefone" id="telefone" required
+											th:field="*{telefone}">
 									</div>
 								</div>
 							</div>
@@ -90,8 +95,8 @@
 								<div class="col-4 col-md-2">
 									<div class="form-group">
 										<label for="cep">CEP</label> <input type="text"
-											class="form-control" name="cep" placeholder="CEP" required
-											th:field="*{cep}">
+											class="form-control" name="cep" id="cep" placeholder="CEP"
+											required th:field="*{cep}">
 									</div>
 								</div>
 							</div>
@@ -121,7 +126,8 @@
 								</div>
 
 								<div th:if="${edit}" class="col-12 text-center">
-									<a href="/gerenciarUsuarios"><button type="button" class="btn btn-info mt-4">Voltar</button></a>
+									<a href="/gerenciarUsuarios"><button type="button"
+											class="btn btn-info mt-4">Voltar</button></a>
 									<button type="submit" class="btn btn-info mt-4">Salvar</button>
 								</div>
 							</div>
@@ -143,6 +149,7 @@
 		</div>
 	</footer>
 
+
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<link
 		href="http://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"
@@ -156,9 +163,16 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
 	<script type="text/javascript">
 		$("#menu").load("/menu");
+
+		$(document).ready(function() {
+			$('#telefone').mask('(00)00000-0000');
+			$('#cep').mask('00000-000');
+		});
 	</script>
 </body>
 

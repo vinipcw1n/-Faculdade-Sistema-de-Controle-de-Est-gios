@@ -18,7 +18,7 @@
 
 <body class="h-100 bg-dark">
 	<div id="menu"></div>
-	
+
 	<div class="container-fluid mt-fix h-100 bg-light">
 		<div class="container text-center py-5 h-100">
 			<img class="img-fluid notDraggable" src="/img/logo2.png"
@@ -29,7 +29,8 @@
 						<h1>Cadastro de Supervisor</h1>
 					</div>
 					<div class="col-12">
-						<form class="text-left" method="post" th:object="${userObj}" action="salvar/supervisor">
+						<form class="text-left" method="post" th:object="${userObj}"
+							action="salvar/supervisor">
 							<div class="row">
 								<div class="col-12 col-md-6">
 									<label for="nome">Nome</label>
@@ -40,17 +41,20 @@
 										</div>
 										<input type="text" class="form-control"
 											placeholder="Seu nome completo" aria-label="Nome completo"
-											name="nome" aria-describedby="basic-addon1" th:field="*{nome}" required>
-										<input type="hidden" name="id" th:value="*{id}">
-										<input type="hidden" name="acao" th:value="${acao}">
+											name="nome" aria-describedby="basic-addon1"
+											th:field="*{nome}" required> <input type="hidden"
+											name="id" th:value="*{id}"> <input type="hidden"
+											name="acao" th:value="${acao}">
 									</div>
 								</div>
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="email">Endereço de email</label> <input
 											type="email" class="form-control" name="email"
-											placeholder="Seu endereço de email" th:field="*{email}" required th:disabled="${edit}">
-										<input th:if="${edit}" type="hidden" name="email" th:value="*{email}">
+											placeholder="Seu endereço de email" th:field="*{email}"
+											required th:disabled="${edit}"> <input
+											th:if="${edit}" type="hidden" name="email"
+											th:value="*{email}">
 									</div>
 								</div>
 							</div>
@@ -58,11 +62,11 @@
 								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="telefone">Telefone</label> <input type="text"
-											class="form-control" name="telefone"
+											class="form-control" name="telefone" id="telefone"
 											placeholder="Seu telefone" th:field="*{telefone}" required>
 									</div>
-                                </div>
-                                <div class="col-12 col-md-6">
+								</div>
+								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="endereco">Endereço</label> <input type="text"
 											class="form-control" name="endereco"
@@ -74,21 +78,22 @@
 								<div class="col-8 col-md-4">
 									<div class="form-group">
 										<label for="cidade">Cidade</label> <input type="text"
-											class="form-control" name="cidade" th:field="*{cidade}" placeholder="Cidade"
-											required>
+											class="form-control" name="cidade" th:field="*{cidade}"
+											placeholder="Cidade" required>
 									</div>
 								</div>
 								<div class="col-4 col-md-2">
 									<div class="form-group">
 										<label for="cep">CEP</label> <input type="text"
-											class="form-control" name="cep" th:field="*{cep}" placeholder="CEP" required>
+											class="form-control" name="cep" th:field="*{cep}" id="cep"
+											placeholder="CEP" required>
 									</div>
-                                </div>
-                                <div class="col-12 col-md-6">
+								</div>
+								<div class="col-12 col-md-6">
 									<div class="form-group">
 										<label for="estado">Estado</label> <input type="text"
-											class="form-control" name="estado" th:field="*{estado}" placeholder="Estado"
-											required>
+											class="form-control" name="estado" th:field="*{estado}"
+											placeholder="Estado" required>
 									</div>
 								</div>
 							</div>
@@ -96,18 +101,17 @@
 								<div class="col-12">
 									<div class="form-group">
 										<label for="senha">Senha</label> <input type="password"
-											class="form-control" name="senha" th:field="*{senha}" placeholder="Sua senha"
-											required>
-
-										<input type="text" name="role" value="2" hidden="true">
-
-										<input type="text" name="aprovado" value="true" hidden="true">
+											class="form-control" name="senha" th:field="*{senha}"
+											placeholder="Sua senha" required> <input type="text"
+											name="role" value="2" hidden="true"> <input
+											type="text" name="aprovado" value="true" hidden="true">
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div th:if="!${edit}" class="col-12 text-center">
-									<a href="/gerenciarUsuarios"><button type="button" class="btn btn-info mt-4">Voltar</button></a>
+									<a href="/gerenciarUsuarios"><button type="button"
+											class="btn btn-info mt-4">Voltar</button></a>
 									<button type="submit" class="btn btn-info mt-4">Cadastrar</button>
 								</div>
 
@@ -148,6 +152,8 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
 	<script type="text/javascript">
 			$(() => {
@@ -166,6 +172,11 @@
 			})
 			
 		$("#menu").load("/menu");
+			
+			$(document).ready(function() {
+				$('#telefone').mask('(00)00000-0000');
+				$('#cep').mask('00000-000');
+			});
 		</script>
 </body>
 
