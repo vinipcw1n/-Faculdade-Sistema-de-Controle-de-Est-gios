@@ -96,10 +96,7 @@ public class PopularBanco {
 			aluno.setEndereco("Av. Teste, número 123");
 			aluno.setTelefone("(16)9999-8888");
 			
-			Curriculo curriculo = new Curriculo();		
-			curriculo = curriculoRepository.save(curriculo);
-			
-			aluno.setCurriculo(curriculo);
+			aluno.setCurriculo(new Curriculo());
 			alunoRepository.save(aluno);
 		}
 	}

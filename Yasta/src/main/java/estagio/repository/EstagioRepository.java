@@ -20,4 +20,7 @@ public interface EstagioRepository extends CrudRepository<Estagio, Long>{
 	
 	@Query("SELECT e FROM Estagio e WHERE supervisorEmpresa.id = ?1 OR supervisorInstituicao.id = ?1")
 	List<Estagio> findBySupervisor(Long id);
+	
+	@Query("SELECT e FROM Estagio e WHERE empresa.id = ?1")
+	List<Estagio> findByEmpresa(Long id);
 }

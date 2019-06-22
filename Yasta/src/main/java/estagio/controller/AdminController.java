@@ -97,15 +97,35 @@ public class AdminController {
 			modelAndView.addObject("acao",acao);
 		} else if (acao.equals("remover")) {
 			if (alunoRepository.findById(user.getId()).isPresent()) {
-				alunoRepository.deleteById(user.getId());
+				if(!(estagioRepository.findByAluno(alunoRepository.findAlunoById(user.getId())).isEmpty())) {
+					System.out.println("a");
+					modelAndView = new ModelAndView("redirect:/gerenciarUsuarios?error=true");
+				}else {
+					alunoRepository.deleteById(user.getId());
+					modelAndView = new ModelAndView("redirect:/gerenciarUsuarios");
+				}
 			} else if (empresaRepository.findById(user.getId()).isPresent()) {
-				empresaRepository.deleteById(user.getId());
+				if(!(estagioRepository.findByEmpresa(user.getId()).isEmpty())) {
+					modelAndView = new ModelAndView("redirect:/gerenciarUsuarios?error=true");
+				}else {
+					empresaRepository.deleteById(user.getId());
+					modelAndView = new ModelAndView("redirect:/gerenciarUsuarios");
+				}
 			} else if (adminRepository.findById(user.getId()).isPresent()) {
-				adminRepository.deleteById(user.getId());
+				if(!(adminRepository.count() <= 1)) {
+					adminRepository.deleteById(user.getId());
+					modelAndView = new ModelAndView("redirect:/gerenciarUsuarios");
+				}else {
+					modelAndView = new ModelAndView("redirect:/gerenciarUsuarios?error=true");
+				}
 			} else if (supervisorEstagioRepository.findById(user.getId()).isPresent()) {
-				supervisorEstagioRepository.deleteById(user.getId());
+				if(!(estagioRepository.findBySupervisor(user.getId()).isEmpty())) {
+					modelAndView = new ModelAndView("redirect:/gerenciarUsuarios?error=true");
+				}else {
+					supervisorEstagioRepository.deleteById(user.getId());
+					modelAndView = new ModelAndView("redirect:/gerenciarUsuarios");
+				}
 			}
-			modelAndView = new ModelAndView("redirect:/gerenciarUsuarios");
 		}
 		return modelAndView;
 	}
@@ -151,13 +171,21 @@ public class AdminController {
 	
 	@PostMapping("**/salvar/estagio")
 	public String salvarEstagio(Estagio estagio) {
-		estagio.setSupervisorEmpresa(supervisorEstagioRepository.findSupervisorEstagioByEmail(estagio.getSupervisorEmpresa().getEmail()));
-		estagio.setSupervisorInstituicao(supervisorEstagioRepository.findSupervisorEstagioByEmail(estagio.getSupervisorInstituicao().getEmail()));
-		estagio.setAluno(alunoRepository.findAlunoByEmail(estagio.getAluno().getEmail()));
-		estagio.setEmpresa(empresaRepository.findEmpresaByEmail(estagio.getEmpresa().getEmail()));
-		
-		estagioRepository.save(estagio);
-		return("redirect:/gerenciarEstagios");
+		if(supervisorEstagioRepository.findSupervisorEstagioByEmail(estagio.getSupervisorEmpresa().getEmail()) != null) {
+			estagio.setSupervisorEmpresa(supervisorEstagioRepository.findSupervisorEstagioByEmail(estagio.getSupervisorEmpresa().getEmail()));
+			if(supervisorEstagioRepository.findSupervisorEstagioByEmail(estagio.getSupervisorInstituicao().getEmail()) != null) {
+				estagio.setSupervisorInstituicao(supervisorEstagioRepository.findSupervisorEstagioByEmail(estagio.getSupervisorInstituicao().getEmail()));
+				if(alunoRepository.findAlunoByEmail(estagio.getAluno().getEmail()) != null) {
+					estagio.setAluno(alunoRepository.findAlunoByEmail(estagio.getAluno().getEmail()));
+					if(empresaRepository.findEmpresaByEmail(estagio.getEmpresa().getEmail()) != null) {
+						estagio.setEmpresa(empresaRepository.findEmpresaByEmail(estagio.getEmpresa().getEmail()));
+						estagioRepository.save(estagio);
+						return("redirect:/gerenciarEstagios");
+					}
+				}
+			}
+		}
+		return("redirect:/gerenciarEstagios?error=true");
 	}
 	
 	@PostMapping("estagio/editar")
